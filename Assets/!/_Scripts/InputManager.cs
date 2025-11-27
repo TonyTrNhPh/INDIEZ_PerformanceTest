@@ -63,6 +63,11 @@ public class InputManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, ballLayer))
         {
             Debug.Log("Hit Ball: " + hit.collider.gameObject.name);
+            if (hit.collider.gameObject.GetComponent<BallBehavior>().GetBallState() == false)
+            {
+                Debug.Log("Ball is not throwable.");
+                return null;
+            }
             return hit.collider.gameObject;
         }
         return null;
@@ -108,12 +113,14 @@ public class InputManager : MonoBehaviour
         rb.freezeRotation = false;
         rb.useGravity = true;
         rb.AddForce(CalculateThrowingTrajectory(), ForceMode.VelocityChange);
+        currentBall.GetComponent<BallBehavior>().SetBallState(false);
         isFlicking = false;
         isHolding = false;
     }
 
     private void CalculateMovementType()
     {
+        if (currentBall == null) return;
         float totalTime = endInputTime - startInputTime;
         float totalDistance = Vector2.Distance(endInputPos, startInputPos);
         if (totalTime <= maxFlickTime && totalDistance > minFlickDistance)
