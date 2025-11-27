@@ -1,4 +1,3 @@
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -8,8 +7,12 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float minHoldTime = 0.15f;
     [SerializeField] private float maxFlickTime = 0.12f;
     [SerializeField] private float minHoldDistance = 0.1f;
-    [SerializeField] private float minFlickDistance = 1.0f;
-
+    [SerializeField] private float minFlickDistance = 5.0f;
+    [SerializeField] private float throwForce = 0.021f;
+    [SerializeField] private float maxThrowHeight = 30f;
+    [SerializeField] private float maxThrowDepth = -1f;
+    [SerializeField] private float maxThrowHorizontal = 8f;
+    [SerializeField] private float minThrowHorizontal = -8f;
     private bool isHolding = false;
     private bool isFlicking = false;
     private GameObject currentBall;
@@ -18,6 +21,7 @@ public class InputManager : MonoBehaviour
     private float startInputTime;
     private Vector2 endInputPos;
     private float endInputTime;
+
 
     private void Start()
     {
@@ -103,6 +107,7 @@ public class InputManager : MonoBehaviour
         Debug.Log("Throwing Ball: " + currentBall.name);
         rb.freezeRotation = false;
         rb.useGravity = true;
+        rb.AddForce(CalculateThrowingTrajectory(), ForceMode.VelocityChange);
         isFlicking = false;
         isHolding = false;
     }
@@ -143,4 +148,19 @@ public class InputManager : MonoBehaviour
         CalculateMovementType();
     }
 
+    private Vector3 CalculateThrowingTrajectory()
+    {
+        Vector2 throwVector = endInputPos - startInputPos; // Get the 2D throw vector
+        throwVector.y = Mathf.Clamp(throwVector.y, -maxThrowHeight, maxThrowHeight); // Clamp vertical limit
+        throwVector.x = Mathf.Clamp(throwVector.x, minThrowHorizontal, maxThrowHorizontal); // Clamp horizontal limit
+
+        float dragTime = endInputTime - startInputTime;
+        if (dragTime <= 0) dragTime = 0.001f;
+
+        float throwSpeed = throwVector.magnitude / dragTime;
+
+        Vector3 throwDirection = new Vector3(throwVector.x, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
+
+        return throwDirection * throwForce * throwSpeed;
+    }
 }
