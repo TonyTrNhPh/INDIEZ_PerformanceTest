@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ballTag
   - ThrownAbleDetector
+  - Slope
   layers:
   - Default
   - TransparentFX

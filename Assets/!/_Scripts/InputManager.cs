@@ -13,6 +13,9 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float maxThrowDepth = -1f;
     [SerializeField] private float maxThrowHorizontal = 8f;
     [SerializeField] private float minThrowHorizontal = -8f;
+    [SerializeField] private float minThrowSpeed = 2000f;
+    [SerializeField] private float maxThrowSpeed = 5000f;
+    [SerializeField] private float fixedZPosition = -23f;
     private bool isHolding = false;
     private bool isFlicking = false;
     private GameObject currentBall;
@@ -62,10 +65,10 @@ public class InputManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, ballLayer))
         {
-            Debug.Log("Hit Ball: " + hit.collider.gameObject.name);
+            // Debug.Log("Hit Ball: " + hit.collider.gameObject.name);
             if (hit.collider.gameObject.GetComponent<BallBehavior>().GetBallState() == false)
             {
-                Debug.Log("Ball is not throwable.");
+                // Debug.Log("Ball is not throwable.");
                 return null;
             }
             return hit.collider.gameObject;
@@ -93,13 +96,13 @@ public class InputManager : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = mainCamera.WorldToScreenPoint(currentBall.transform.position).z;
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
-        currentBall.transform.position = worldPos;
+        currentBall.transform.position = new Vector3(worldPos.x, worldPos.y, fixedZPosition);
     }
 
     private void ReleaseBall()
     {
         if (currentBall == null) return;
-        Debug.Log("Releasing Ball: " + currentBall.name);
+        // Debug.Log("Releasing Ball: " + currentBall.name);
         rb.freezeRotation = false;
         rb.useGravity = true;
         isHolding = false;
@@ -109,7 +112,7 @@ public class InputManager : MonoBehaviour
     private void ThrowBall()
     {
         if (currentBall == null) return;
-        Debug.Log("Throwing Ball: " + currentBall.name);
+        // Debug.Log("Throwing Ball: " + currentBall.name);
         rb.freezeRotation = false;
         rb.useGravity = true;
         rb.AddForce(CalculateThrowingTrajectory(), ForceMode.VelocityChange);
@@ -127,12 +130,12 @@ public class InputManager : MonoBehaviour
         {
             isHolding = false;
             isFlicking = true;
-            Debug.Log("Flick detected.");
+            // Debug.Log("Flick detected.");
             return; // Flicking
         }
         isFlicking = false;
         isHolding = true;
-        Debug.Log("Holding detected.");
+        // Debug.Log("Holding detected.");
     }
 
     private void UpdateInputTracking(Vector2 pos)
@@ -162,10 +165,12 @@ public class InputManager : MonoBehaviour
         throwVector.x = Mathf.Clamp(throwVector.x, minThrowHorizontal, maxThrowHorizontal); // Clamp horizontal limit
 
         float dragTime = endInputTime - startInputTime;
-        if (dragTime <= 0) dragTime = 0.001f;
+        if (dragTime <= 0) dragTime = 0.001f; 
 
         float throwSpeed = throwVector.magnitude / dragTime;
-
+        if (throwSpeed < minThrowSpeed) throwSpeed = minThrowSpeed;
+        if (throwSpeed > maxThrowSpeed) throwSpeed = maxThrowSpeed;
+        Debug.Log("Throw Speed: " + throwSpeed);
         Vector3 throwDirection = new Vector3(throwVector.x, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
 
         return throwDirection * throwForce * throwSpeed;
