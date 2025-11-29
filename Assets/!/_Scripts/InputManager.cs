@@ -28,15 +28,21 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
     {
-
+        if (GameManager.Instance == null) return;
+        if (GameManager.Instance.GetCurrentGameState() == GameState.GameOver) return; // Stop input
         if (Input.GetMouseButtonDown(0))
         {
             PickUpBall();
+            if (GameManager.Instance.GetCurrentGameState() != GameState.Playing) // Changed to Playing state for the first time
+            {
+                GameManager.Instance.UpdateGameState(GameState.Playing);
+            }
         }
         if (Input.GetMouseButton(0))
         {
@@ -65,10 +71,8 @@ public class InputManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, ballLayer))
         {
-            // Debug.Log("Hit Ball: " + hit.collider.gameObject.name);
             if (hit.collider.gameObject.GetComponent<BallBehavior>().GetBallState() == false)
             {
-                // Debug.Log("Ball is not throwable.");
                 return null;
             }
             return hit.collider.gameObject;
@@ -102,7 +106,6 @@ public class InputManager : MonoBehaviour
     private void ReleaseBall()
     {
         if (currentBall == null) return;
-        // Debug.Log("Releasing Ball: " + currentBall.name);
         rb.freezeRotation = false;
         rb.useGravity = true;
         isHolding = false;
@@ -112,7 +115,6 @@ public class InputManager : MonoBehaviour
     private void ThrowBall()
     {
         if (currentBall == null) return;
-        // Debug.Log("Throwing Ball: " + currentBall.name);
         rb.freezeRotation = false;
         rb.useGravity = true;
         rb.AddForce(CalculateThrowingTrajectory(), ForceMode.VelocityChange);
@@ -130,12 +132,10 @@ public class InputManager : MonoBehaviour
         {
             isHolding = false;
             isFlicking = true;
-            // Debug.Log("Flick detected.");
             return; // Flicking
         }
         isFlicking = false;
         isHolding = true;
-        // Debug.Log("Holding detected.");
     }
 
     private void UpdateInputTracking(Vector2 pos)
@@ -165,12 +165,11 @@ public class InputManager : MonoBehaviour
         throwVector.x = Mathf.Clamp(throwVector.x, minThrowHorizontal, maxThrowHorizontal); // Clamp horizontal limit
 
         float dragTime = endInputTime - startInputTime;
-        if (dragTime <= 0) dragTime = 0.001f; 
+        if (dragTime <= 0) dragTime = 0.001f;
 
         float throwSpeed = throwVector.magnitude / dragTime;
         if (throwSpeed < minThrowSpeed) throwSpeed = minThrowSpeed;
         if (throwSpeed > maxThrowSpeed) throwSpeed = maxThrowSpeed;
-        Debug.Log("Throw Speed: " + throwSpeed);
         Vector3 throwDirection = new Vector3(throwVector.x, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
 
         return throwDirection * throwForce * throwSpeed;
