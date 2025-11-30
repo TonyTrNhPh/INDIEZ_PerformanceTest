@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float scoreBase = 1.0f;
     [SerializeField] private float scoreDunk = 2.0f;
     [SerializeField] private float timeLimit = 60.0f;
-    [SerializeField] private string[] quotes;
+    [SerializeField] private float timeBonus = 10f;
+
+    [Header("Quotes")]
+    [SerializeField] private string[] quotesScoring;
+    [SerializeField] private string[] quotesBonuses;
     [SerializeField] private InputManager inputManager;
 
 
@@ -59,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
     private void UpdateScoreUI()
     {
@@ -99,7 +103,7 @@ public class GameManager : MonoBehaviour
             highScore = currentScore;
         }
         UpdateScoreUI();
-        UpdateQuoteUI("Nice Shot!");
+        UpdateQuoteUI(quotesScoring[UnityEngine.Random.Range(0, quotesScoring.Length)]);
     }
 
     public void AddBonus()
@@ -110,8 +114,9 @@ public class GameManager : MonoBehaviour
         {
             highScore = currentScore;
         }
+        timer += timeBonus; // Add time bonus
         UpdateScoreUI();
-        UpdateQuoteUI("Perfect Dunk!");
+        UpdateQuoteUI(quotesBonuses[UnityEngine.Random.Range(0, quotesBonuses.Length)]);
     }
 
     public void UpdateGameState(GameState newState)
@@ -140,6 +145,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game State: Starting");
         timer = timeLimit;
+        currentScore = 0;
+        UpdateScoreUI();
+        UpdateQuoteUI("Get Ready!");
         timeText.text = FormattedTime();
     }
     private void HandleGamePlaying()
@@ -162,6 +170,16 @@ public class GameManager : MonoBehaviour
     public GameState GetCurrentGameState()
     {
         return State;
+    }
+
+    public void OnMoveBasketButtonClick()
+    {
+        UpdateGameState(GameState.Starting);
+    }
+
+    public void OnSelectBallButtonClick()
+    {
+        UpdateGameState(GameState.SelectBall);
     }
 
 }

@@ -39,10 +39,6 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             PickUpBall();
-            if (GameManager.Instance.GetCurrentGameState() != GameState.Playing) // Changed to Playing state for the first time
-            {
-                GameManager.Instance.UpdateGameState(GameState.Playing);
-            }
         }
         if (Input.GetMouseButton(0))
         {
@@ -84,6 +80,7 @@ public class InputManager : MonoBehaviour
     {
         isHolding = true;
         currentBall = GetSelectedBall();
+        if (currentBall == null) return;
         if (currentBall != null)
         {
             rb = currentBall.GetComponent<Rigidbody>();
@@ -91,6 +88,10 @@ public class InputManager : MonoBehaviour
             rb.freezeRotation = true;
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+        }
+        if (GameManager.Instance.GetCurrentGameState() != GameState.Playing) // Changed to Playing state for the first time
+        {
+            GameManager.Instance.UpdateGameState(GameState.Playing);
         }
     }
 
