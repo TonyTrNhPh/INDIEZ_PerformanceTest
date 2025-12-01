@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
+
+
         if (Instance == null)
         {
             Instance = this;
@@ -63,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Debug.Log("Is mobile runtime? " + Application.isMobilePlatform);
     }
 
     private void Start()
@@ -242,6 +246,11 @@ public class GameManager : MonoBehaviour
     public int GetCurrentBallMaterialIndex()
     {
         return currentBallMaterialIndex;
+    }
+
+    public bool IsMobile()
+    {
+        return Application.isMobilePlatform;
     }
 }
 

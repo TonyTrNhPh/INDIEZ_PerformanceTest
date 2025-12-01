@@ -47,7 +47,6 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (!EventSystem.current.IsPointerOverGameObject()) return;
         switch (GameManager.Instance.State)
         {
             case GameState.Starting:
@@ -62,11 +61,46 @@ public class InputManager : MonoBehaviour
             case GameState.GameOver:
                 break;
         }
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
     }
+
+    private bool InputDown()
+    {
+        if(GameManager.Instance.IsMobile()) 
+            return Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
+        return Input.GetMouseButtonDown(0);
+    }
+
+    private bool InputHold()
+    {
+        if(GameManager.Instance.IsMobile()) 
+            return Input.touchCount > 0 && 
+            (Input.GetTouch(0).phase == TouchPhase.Moved || 
+            Input.GetTouch(0).phase == TouchPhase.Stationary);
+        return Input.GetMouseButton(0);
+    }
+
+    private bool InputUp()
+    {
+        if(GameManager.Instance.IsMobile()) 
+            return Input.touchCount > 0 && 
+            (Input.GetTouch(0).phase == TouchPhase.Ended || 
+            Input.GetTouch(0).phase == TouchPhase.Canceled);
+        return Input.GetMouseButtonUp(0);
+    }
+
+    private Vector2 GetInputPosition()
+    {
+        if(GameManager.Instance.IsMobile()) 
+            return Input.GetTouch(0).position;
+        return Input.mousePosition;
+    }
+
     private void HandleStartingInput()
     {
         currentBall = null;
-        if (Input.GetMouseButtonDown(0))
+        if(InputDown())
         {
             if (GetSelectedBall() != null)
             {
@@ -75,20 +109,21 @@ public class InputManager : MonoBehaviour
             PickUpBall();
         }
     }
+
     private void HandleGameplayInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (InputDown())
         {
             PickUpBall();
         }
-        if (Input.GetMouseButton(0))
+        if (InputHold())
         {
-            UpdateInputTracking(Input.mousePosition);
+            UpdateInputTracking(GetInputPosition());
             DragBall();
         }
-        if (Input.GetMouseButtonUp(0))
+        if (InputUp())
         {
-            EndInputTracking(Input.mousePosition);
+            EndInputTracking(GetInputPosition());
             if (isHolding && !isFlicking)
             {
                 ReleaseBall();
@@ -104,15 +139,15 @@ public class InputManager : MonoBehaviour
     private void HandleSelectionInput()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (InputDown())
         {
             StartSelectionDrag();
         }
-        if (Input.GetMouseButton(0))
+        if (InputHold())
         {
             UpdateSelectionDrag();
         }
-        if (Input.GetMouseButtonUp(0))
+        if (InputUp())
         {
             EndSelectionDrag();
         }
