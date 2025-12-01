@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -36,17 +35,14 @@ public class InputManager : MonoBehaviour
     private Vector2 endInputPos;
     private float endInputTime;
     private Vector2 selectionDragStartPos;
-    public List<Transform> selectedBalls = new List<Transform>();
+    private int selectedBallIndex = 0;
+    private Coroutine snapCoroutine;
 
 
     private void Start()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        foreach (Transform ball in ballSelectionParent.transform)
-        {
-            selectedBalls.Add(ball);
-        }
     }
 
     private void Update()
@@ -68,8 +64,8 @@ public class InputManager : MonoBehaviour
         }
     }
     private void HandleStartingInput()
-    {   
-        currentBall= null;
+    {
+        currentBall = null;
         if (Input.GetMouseButtonDown(0))
         {
             if (GetSelectedBall() != null)
@@ -107,6 +103,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleSelectionInput()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             StartSelectionDrag();
@@ -139,12 +136,14 @@ public class InputManager : MonoBehaviour
 
     private void PickUpBall()
     {
-        isHolding = true;
         currentBall = GetSelectedBall();
         if (currentBall == null) return;
-        if (currentBall != null)
+
+        isHolding = true;
+        rb = currentBall.GetComponent<Rigidbody>();
+
+        if (rb != null)
         {
-            rb = currentBall.GetComponent<Rigidbody>();
             rb.useGravity = false;
             rb.freezeRotation = true;
             rb.linearVelocity = Vector3.zero;
@@ -261,33 +260,76 @@ public class InputManager : MonoBehaviour
     }
     private void SnapToBallPos()
     {
-        StartCoroutine(SmoothSnapCoroutine());
+        if (snapCoroutine != null)
+        {
+            StopCoroutine(snapCoroutine);
+        }
+        snapCoroutine = StartCoroutine(SmoothSnapCoroutine());
     }
 
-    IEnumerator SmoothSnapCoroutine()
+    private IEnumerator SmoothSnapCoroutine()
     {
-        float targetY = 0f;
-        if (ballSelectionParent.transform.rotation.y % 45f != 0)
-        {
-            if (ballSelectionParent.transform.rotation.eulerAngles.y % 45f < 22.5f)
-            {
-                targetY = ballSelectionParent.transform.rotation.eulerAngles.y - (ballSelectionParent.transform.rotation.eulerAngles.y % 45f);
-            }
-            else
-            {
-                targetY = ballSelectionParent.transform.rotation.eulerAngles.y + (45f - (ballSelectionParent.transform.rotation.eulerAngles.y % 45f));
-            }
-        }
+        float currentY = ballSelectionParent.transform.rotation.eulerAngles.y;
+        float division = 360f / GameManager.Instance.GetSelectedBallMaterial().Length;
+
+        float targetY = Mathf.Round(currentY / division) * division;
+        targetY = targetY % 360f;
+
+        Quaternion startRotation = ballSelectionParent.transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(0, targetY, 0);
+
         float t = 0f;
+
         while (t < 1f)
         {
-            t += Time.deltaTime * 4;
-            ballSelectionParent.transform.rotation = Quaternion.Lerp(ballSelectionParent.transform.rotation, targetRotation, t);
+            t += Time.deltaTime * 4f;
+            ballSelectionParent.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, t);
             yield return null;
         }
-        ballSelectionRing.SetActive(true);
 
+        ballSelectionParent.transform.rotation = targetRotation;
+
+        int materialCount = GameManager.Instance.GetSelectedBallMaterial().Length;
+        selectedBallIndex = Mathf.RoundToInt(targetY / division) % materialCount;
+        selectedBallIndex = (materialCount - selectedBallIndex) % materialCount;
+
+        ballSelectionRing.SetActive(true);
+        snapCoroutine = null;
     }
+
+    public void TurnToCurrentBallMaterial()
+    {
+        if (snapCoroutine != null)
+        {
+            StopCoroutine(snapCoroutine);
+        }
+        snapCoroutine = StartCoroutine(TurnToCurrentBallMaterialCoroutine());
+    }
+
+    public IEnumerator TurnToCurrentBallMaterialCoroutine()
+    {
+        int index = GameManager.Instance.GetCurrentBallMaterialIndex();
+        index = (GameManager.Instance.GetSelectedBallMaterial().Length - index) % GameManager.Instance.GetSelectedBallMaterial().Length;
+        float division = 360f / GameManager.Instance.GetSelectedBallMaterial().Length;
+
+        Quaternion startRotation = ballSelectionParent.transform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(0, index * division, 0);
+
+        float t = 0f;
+        float duration = 0.5f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            ballSelectionParent.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, t);
+            yield return null;
+        }
+
+        ballSelectionParent.transform.rotation = targetRotation;
+        selectedBallIndex = index;
+        ballSelectionRing.SetActive(true);
+    }
+
+    public int GetSelectedBallIndex() => selectedBallIndex;
 
 }

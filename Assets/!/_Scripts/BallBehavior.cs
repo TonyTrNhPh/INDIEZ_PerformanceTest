@@ -15,6 +15,8 @@ public class BallBehavior : MonoBehaviour
     private bool isHitBottomSensor = false;
     private bool isHitBasketRing = false;
     private bool isScoring = false;
+    private Vector3 storedVelocity;
+    private Vector3 storedAngularVelocity;
 
     private Rigidbody rb;
 
@@ -23,9 +25,26 @@ public class BallBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
+        GameManager.OnGameStateChanged += HandleGameStateChange;
+    }
 
+    private void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= HandleGameStateChange;
+    }
+
+    private void HandleGameStateChange(GameState newState)
+    {
+        if (newState == GameState.SelectBall)
+        {
+            FreezeBall(true);
+        }
+        else if (newState == GameState.Playing)
+        {
+            FreezeBall(false);
+        }
     }
 
     private void FixedUpdate()
@@ -38,6 +57,25 @@ public class BallBehavior : MonoBehaviour
             if (rb.linearVelocity.z > 0)
             {
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 0);
+            }
+        }
+    }
+
+    private void FreezeBall(bool isFreeze)
+    {
+        if(rb != null)
+        {
+            if (isFreeze)
+            {
+                storedVelocity = rb.linearVelocity;
+                storedAngularVelocity = rb.angularVelocity;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                rb.linearVelocity = storedVelocity;
+                rb.angularVelocity = storedAngularVelocity;
             }
         }
     }
@@ -87,7 +125,6 @@ public class BallBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("BasketRing"))
         {
             isHitBasketRing = true;
-            Debug.Log("Hit Basket Ring Object");
         }
     }
     private void OnCollisionExit(Collision collision)

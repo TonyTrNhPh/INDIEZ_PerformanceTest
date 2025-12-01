@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string[] quotesBonuses;
     [SerializeField] private InputManager inputManager;
 
+    [Header("Ball skins system")]
+    [SerializeField] private Material[] ballMaterials;
+    [SerializeField] private GameObject[] ballInScene;
+
 
     [Header("Triggers")]
     [SerializeField] private Collider dunkTriggerBottom;
@@ -45,6 +49,8 @@ public class GameManager : MonoBehaviour
     private int currentScore = 0;
     private int highScore = 0;
     private float timer = 0f;
+    private int selectedBallIndex = 0;
+    private int currentBallMaterialIndex = 0;
 
     private void Awake()
     {
@@ -81,7 +87,7 @@ public class GameManager : MonoBehaviour
     {
         while (timer > 0)
         {
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1.0f);
             timer -= 1f;
             timeText.text = FormattedTime();
         }
@@ -124,6 +130,23 @@ public class GameManager : MonoBehaviour
             UpdateQuoteUI(quotesBonuses[UnityEngine.Random.Range(0, quotesBonuses.Length)]);
         }
     }
+    private void ApplySelectedMaterial()
+    {
+        Material selectedMaterial = ballMaterials[selectedBallIndex];
+        currentBallMaterialIndex = selectedBallIndex; // Cache it
+
+        foreach (GameObject ball in ballInScene)
+        {
+            if (ball != null)
+            {
+                Renderer renderer = ball.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    renderer.material = selectedMaterial; // Reuse reference
+                }
+            }
+        }
+    }
 
     public void UpdateGameState(GameState newState)
     {
@@ -149,18 +172,15 @@ public class GameManager : MonoBehaviour
     }
     private void HandleGameStarting()
     {
-        Debug.Log("Game State: Starting");
         StopAllCoroutines();
         timer = timeLimit;
         currentScore = 0;
+        timeText.text = FormattedTime();
         UpdateScoreUI();
         UpdateQuoteUI("Get Ready!");
-        timeText.text = FormattedTime();
     }
     private void HandleGamePlaying()
     {
-        Debug.Log("Game State: Playing");
-        UpdateQuoteUI("Let's Dunk!");
         selectingBallOverlay.SetActive(false);
         playingOverlay.SetActive(true);
         selectionCamera.enabled = false;
@@ -170,7 +190,11 @@ public class GameManager : MonoBehaviour
     }
     private void HandleGameSelectBall()
     {
-        Debug.Log("Game State: Select Ball");
+        if (inputManager != null)
+        {
+            inputManager.TurnToCurrentBallMaterial();
+        }
+
         playingOverlay.SetActive(false);
         selectingBallOverlay.SetActive(true);
         StopAllCoroutines();
@@ -179,7 +203,6 @@ public class GameManager : MonoBehaviour
     }
     private void HandleGameOver()
     {
-        Debug.Log("Game State: Game Over");
         quoteText.text = "Game Over!";
     }
 
@@ -199,13 +222,27 @@ public class GameManager : MonoBehaviour
     }
     public void OnConfirmBallButtonClick()
     {
+        selectedBallIndex = inputManager.GetSelectedBallIndex();
+        ApplySelectedMaterial();
         UpdateGameState(GameState.Playing);
     }
     public void OnBackToGameButtonClick()
     {
         UpdateGameState(GameState.Playing);
     }
+    public void OnRandomBallButtonClick()
+    {
+        selectedBallIndex = UnityEngine.Random.Range(0, ballMaterials.Length);
+        ApplySelectedMaterial();
+        UpdateGameState(GameState.Playing);
+    }
 
+    public Material[] GetSelectedBallMaterial() { return ballMaterials; }
+    public GameObject[] GetBallInScene() { return ballInScene; }
+    public int GetCurrentBallMaterialIndex()
+    {
+        return currentBallMaterialIndex;
+    }
 }
 
 public enum GameState
