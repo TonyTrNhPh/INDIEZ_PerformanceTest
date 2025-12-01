@@ -4480,7 +4480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreBase: 1
   scoreDunk: 2
-  timeLimit: 30
+  timeLimit: 90
   timeBonus: 10
   quotesScoring:
   - nice shot!
