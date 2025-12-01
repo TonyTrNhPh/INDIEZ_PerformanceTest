@@ -1,9 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
+    [Header("Cameras and Layers")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask ballLayer;
+    [SerializeField] private LayerMask ballSelectionLayer;
+    [SerializeField] private GameObject ballSelectionParent;
+    [SerializeField] private GameObject ballSelectionRing;
+
+    [Header("Input Settings")]
     [SerializeField] private float minHoldTime = 0.15f;
     [SerializeField] private float maxFlickTime = 0.12f;
     [SerializeField] private float minHoldDistance = 0.1f;
@@ -16,26 +25,62 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float minThrowSpeed = 2000f;
     [SerializeField] private float maxThrowSpeed = 5000f;
     [SerializeField] private float fixedZPosition = -23f;
+    [SerializeField] private float selectionDragSpeed = 0.3f;
     private bool isHolding = false;
     private bool isFlicking = false;
+    private bool isDraggingSelection = false;
     private GameObject currentBall;
     private Rigidbody rb;
     private Vector2 startInputPos;
     private float startInputTime;
     private Vector2 endInputPos;
     private float endInputTime;
+    private Vector2 selectionDragStartPos;
+    public List<Transform> selectedBalls = new List<Transform>();
 
 
     private void Start()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        foreach (Transform ball in ballSelectionParent.transform)
+        {
+            selectedBalls.Add(ball);
+        }
     }
 
     private void Update()
     {
-        if (GameManager.Instance == null) return;
-        if (GameManager.Instance.GetCurrentGameState() == GameState.GameOver) return; // Stop input
+        if (!EventSystem.current.IsPointerOverGameObject()) return;
+        switch (GameManager.Instance.State)
+        {
+            case GameState.Starting:
+                HandleStartingInput();
+                break;
+            case GameState.Playing:
+                HandleGameplayInput();
+                break;
+            case GameState.SelectBall:
+                HandleSelectionInput();
+                break;
+            case GameState.GameOver:
+                break;
+        }
+    }
+    private void HandleStartingInput()
+    {   
+        currentBall= null;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (GetSelectedBall() != null)
+            {
+                GameManager.Instance.UpdateGameState(GameState.Playing);
+            }
+            PickUpBall();
+        }
+    }
+    private void HandleGameplayInput()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             PickUpBall();
@@ -57,6 +102,22 @@ public class InputManager : MonoBehaviour
                 ThrowBall();
             }
             currentBall = null;
+        }
+    }
+
+    private void HandleSelectionInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartSelectionDrag();
+        }
+        if (Input.GetMouseButton(0))
+        {
+            UpdateSelectionDrag();
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            EndSelectionDrag();
         }
     }
 
@@ -89,7 +150,7 @@ public class InputManager : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-        if (GameManager.Instance.GetCurrentGameState() != GameState.Playing) // Changed to Playing state for the first time
+        if (GameManager.Instance.GetCurrentGameState() != GameState.Playing)
         {
             GameManager.Instance.UpdateGameState(GameState.Playing);
         }
@@ -175,4 +236,58 @@ public class InputManager : MonoBehaviour
 
         return throwDirection * throwForce * throwSpeed;
     }
+
+    private void StartSelectionDrag()
+    {
+        ballSelectionRing.SetActive(false);
+        isDraggingSelection = true;
+        selectionDragStartPos = Input.mousePosition;
+    }
+
+    private void UpdateSelectionDrag()
+    {
+        if (!isDraggingSelection) return;
+        ballSelectionRing.SetActive(false);
+        Vector2 currentMousePos = Input.mousePosition;
+        float dragDelta = currentMousePos.x - selectionDragStartPos.x;
+        ballSelectionParent.transform.Rotate(0, -dragDelta * selectionDragSpeed, 0);
+        selectionDragStartPos = currentMousePos;
+    }
+
+    private void EndSelectionDrag()
+    {
+        isDraggingSelection = false;
+        SnapToBallPos();
+    }
+    private void SnapToBallPos()
+    {
+        StartCoroutine(SmoothSnapCoroutine());
+    }
+
+    IEnumerator SmoothSnapCoroutine()
+    {
+        float targetY = 0f;
+        if (ballSelectionParent.transform.rotation.y % 45f != 0)
+        {
+            if (ballSelectionParent.transform.rotation.eulerAngles.y % 45f < 22.5f)
+            {
+                targetY = ballSelectionParent.transform.rotation.eulerAngles.y - (ballSelectionParent.transform.rotation.eulerAngles.y % 45f);
+            }
+            else
+            {
+                targetY = ballSelectionParent.transform.rotation.eulerAngles.y + (45f - (ballSelectionParent.transform.rotation.eulerAngles.y % 45f));
+            }
+        }
+        Quaternion targetRotation = Quaternion.Euler(0, targetY, 0);
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * 4;
+            ballSelectionParent.transform.rotation = Quaternion.Lerp(ballSelectionParent.transform.rotation, targetRotation, t);
+            yield return null;
+        }
+        ballSelectionRing.SetActive(true);
+
+    }
+
 }

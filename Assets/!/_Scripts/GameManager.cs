@@ -29,12 +29,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI quoteText;
+    [SerializeField] private GameObject playingOverlay;
+    [SerializeField] private GameObject selectingBallOverlay;
     [SerializeField] private Button selectBallButton;
     [SerializeField] private Button confirmBallButton;
     [SerializeField] private Button backToGameButton;
     [SerializeField] private Button randomBallButton;
     [SerializeField] private Button moveBasketButton;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera selectionCamera;
 
     public static GameManager Instance { get; private set; }
     public GameState State { get; private set; }
@@ -116,7 +119,10 @@ public class GameManager : MonoBehaviour
         }
         timer += timeBonus; // Add time bonus
         UpdateScoreUI();
-        UpdateQuoteUI(quotesBonuses[UnityEngine.Random.Range(0, quotesBonuses.Length)]);
+        if (GetCurrentGameState() != GameState.GameOver)
+        {
+            UpdateQuoteUI(quotesBonuses[UnityEngine.Random.Range(0, quotesBonuses.Length)]);
+        }
     }
 
     public void UpdateGameState(GameState newState)
@@ -144,6 +150,7 @@ public class GameManager : MonoBehaviour
     private void HandleGameStarting()
     {
         Debug.Log("Game State: Starting");
+        StopAllCoroutines();
         timer = timeLimit;
         currentScore = 0;
         UpdateScoreUI();
@@ -153,13 +160,22 @@ public class GameManager : MonoBehaviour
     private void HandleGamePlaying()
     {
         Debug.Log("Game State: Playing");
+        UpdateQuoteUI("Let's Dunk!");
+        selectingBallOverlay.SetActive(false);
+        playingOverlay.SetActive(true);
+        selectionCamera.enabled = false;
+        mainCamera.enabled = true;
         StopAllCoroutines();
-        timer = timeLimit;
         StartCoroutine(CountdownTimer());
     }
     private void HandleGameSelectBall()
     {
         Debug.Log("Game State: Select Ball");
+        playingOverlay.SetActive(false);
+        selectingBallOverlay.SetActive(true);
+        StopAllCoroutines();
+        selectionCamera.enabled = true;
+        mainCamera.enabled = false;
     }
     private void HandleGameOver()
     {
@@ -180,6 +196,14 @@ public class GameManager : MonoBehaviour
     public void OnSelectBallButtonClick()
     {
         UpdateGameState(GameState.SelectBall);
+    }
+    public void OnConfirmBallButtonClick()
+    {
+        UpdateGameState(GameState.Playing);
+    }
+    public void OnBackToGameButtonClick()
+    {
+        UpdateGameState(GameState.Playing);
     }
 
 }
