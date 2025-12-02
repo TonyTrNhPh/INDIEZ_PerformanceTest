@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeBonus = 10f;
     [SerializeField] private float targetFPS = 60f;
     [SerializeField] private int minStreakStart = 3;
-    [SerializeField] private GameObject basket;
+    [SerializeField] private BasketBehavior basket;
 
     [Header("Quotes")]
     [SerializeField] private string[] quotesScoring;
@@ -288,6 +288,10 @@ public class GameManager : MonoBehaviour
     {
         isBasketMoved = !isBasketMoved;
         ToggleSprite(moveBasketButton, isBasketMoved);
+        if (basket != null)
+        {
+            basket.ToggleBasketMovement(isBasketMoved);
+        }
     }
     public void OnRestartButtonClick()
     {

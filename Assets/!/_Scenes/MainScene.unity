@@ -4445,6 +4445,7 @@ MonoBehaviour:
   timeBonus: 10
   targetFPS: 60
   minStreakStart: 3
+  basket: {fileID: 1002990885}
   quotesScoring:
   - nice shot!
   - scored
@@ -4497,6 +4498,8 @@ MonoBehaviour:
   randomBallButton: {fileID: 649508143}
   mainCamera: {fileID: 1216257101}
   selectionCamera: {fileID: 192879967}
+  uncheckedSprite: {fileID: 21300000, guid: 645751fb42c0e58700000000000000cd, type: 3}
+  checkedSprite: {fileID: 21300000, guid: 628edbfb42c63c0d00000000000000de, type: 3}
 --- !u!1 &618444804
 GameObject:
   m_ObjectHideFlags: 0
@@ -9045,6 +9048,7 @@ GameObject:
   - component: {fileID: 1002990884}
   - component: {fileID: 1002990883}
   - component: {fileID: 1002990882}
+  - component: {fileID: 1002990885}
   m_Layer: 0
   m_Name: BasketRingJoint
   m_TagString: 
@@ -9136,6 +9140,20 @@ Transform:
   - {fileID: 50436503}
   m_Father: {fileID: 2357413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002990885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002990881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da807a81807be3e4489fa3924e9d1d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basketMoveDistance: 2
+  basketMoveSpeed: 2
 --- !u!1 &1032569987
 GameObject:
   m_ObjectHideFlags: 0
