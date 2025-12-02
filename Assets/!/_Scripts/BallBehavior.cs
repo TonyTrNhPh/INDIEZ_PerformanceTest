@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem streakEffect;
+    [SerializeField] private ParticleSystem ballEffect;
     [SerializeField] private float ballSpeed = 20f;
     [SerializeField] private Collider dunkTriggerBottom;
     [SerializeField] private Collider dunkTriggerTop;
@@ -15,6 +15,7 @@ public class BallBehavior : MonoBehaviour
     private bool isHitBottomSensor = false;
     private bool isHitBasketRing = false;
     private bool isScoring = false;
+    private bool isAudioPlayed = false;
     private Vector3 storedVelocity;
     private Vector3 storedAngularVelocity;
     private Rigidbody rb;
@@ -93,11 +94,19 @@ public class BallBehavior : MonoBehaviour
         {
             isHitTopSensor = true;
         }
+        if (other.CompareTag("MissDetector"))
+        {
+            if (!isScoring && !isThrownAble)
+            {
+                GameManager.Instance.ResetCurrentStreak();
+            }
+        }
         if (isHitBottomSensor && isHitTopSensor && isHitBasketRing)
         {
             if (!isScoring)
             {
                 isScoring = true;
+                GameManager.Instance.PlayRandomNetAudio();
                 GameManager.Instance.AddScore();
             }
         }
@@ -106,6 +115,8 @@ public class BallBehavior : MonoBehaviour
             if (!isScoring)
             {
                 isScoring = true;
+                GameManager.Instance.PlayPerfectAudio();
+                GameManager.Instance.PlayRandomNetAudio();
                 GameManager.Instance.AddBonus();
             }
         }
@@ -120,10 +131,16 @@ public class BallBehavior : MonoBehaviour
             isHitBottomSensor = false;
             isHitBasketRing = false;
             isScoring = false;
+            isAudioPlayed = false;
         }
         if (collision.gameObject.CompareTag("BasketRing"))
         {
             isHitBasketRing = true;
+            if (!isAudioPlayed)
+            {
+                GameManager.Instance.PlayRandomBasketAudio();
+                isAudioPlayed = true;
+            }
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -131,10 +148,11 @@ public class BallBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Slope"))
         {
             isOnSlope = false;
+            isAudioPlayed = false;
         }
     }
     public bool GetBallState() => isThrownAble;
     public bool SetBallState(bool state) => isThrownAble = state;
-    public void PlayStreakEffect() => streakEffect.Play();
-    public void StopStreakEffect() => streakEffect.Stop();
+    public void PlayBallEffect() => ballEffect.Play();
+    public void StopBallEffect() => ballEffect.Stop();
 }

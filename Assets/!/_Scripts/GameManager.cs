@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeLimit = 60.0f;
     [SerializeField] private float timeBonus = 10f;
     [SerializeField] private float targetFPS = 60f;
+    [SerializeField] private int minStreakStart = 2;
 
     [Header("Quotes")]
     [SerializeField] private string[] quotesScoring;
@@ -22,12 +23,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Material[] ballMaterials;
     [SerializeField] private GameObject[] ballInScene;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] basketAudio;
+    [SerializeField] private AudioClip[] netAudio;
+    [SerializeField] private AudioClip perfectAudio;
+    [SerializeField] private AudioSource globalVolume;
 
-    [Header("Triggers")]
-    [SerializeField] private Collider dunkTriggerBottom;
-    [SerializeField] private Collider dunkTriggerTop;
-    [SerializeField] private Collider basketRingTrigger;
-
+    [Header("Particle")]
+    [SerializeField] private ParticleSystem perfectEffect;
+    [SerializeField] private ParticleSystem basketEffect;
 
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI currentScoreText;
@@ -49,12 +53,13 @@ public class GameManager : MonoBehaviour
     public GameState State { get; private set; }
     public static event Action<GameState> OnGameStateChanged;
     private int currentScore = 0;
+    private int currentStreak = 0;
     private int highScore = 0;
     private float timer = 0f;
     private int selectedBallIndex = 0;
     private int currentBallMaterialIndex = 0;
-    private bool isAimAssistEnabled = false;
     private bool isBasketMoveEnabled = false;
+    private bool isStreakActive = false;
 
     private void Awake()
     {
@@ -78,7 +83,18 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
+        if (GetCurrentGameState() == GameState.Playing)
+        {
+            if (currentStreak >= minStreakStart)
+            {
+                isStreakActive = true;
+            }
+            else
+            {
+                isStreakActive = false;
+            }
+            PlayStreakEffects();
+        }
     }
     private void UpdateScoreUI()
     {
@@ -111,19 +127,38 @@ public class GameManager : MonoBehaviour
 
     public void AddScore()
     {
-        int scoreToAdd = Mathf.RoundToInt(scoreBase);
+        int scoreToAdd = 0;
+        if (isStreakActive)
+        {
+            scoreBase = 2;
+        }
+        else
+        {
+            scoreBase = 1;
+        }
+        scoreToAdd = Mathf.RoundToInt(scoreBase);
         currentScore += scoreToAdd;
         if (currentScore > highScore)
         {
             highScore = currentScore;
         }
         UpdateScoreUI();
+        currentStreak++;
         UpdateQuoteUI(quotesScoring[UnityEngine.Random.Range(0, quotesScoring.Length)]);
     }
 
     public void AddBonus()
     {
-        int bonusToAdd = Mathf.RoundToInt(scoreDunk);
+        int bonusToAdd = 0;
+        if (isStreakActive)
+        {
+            scoreDunk = 4;
+        }
+        else
+        {
+            scoreDunk = 2;
+        }
+        bonusToAdd = Mathf.RoundToInt(scoreDunk);
         currentScore += bonusToAdd;
         if (currentScore > highScore)
         {
@@ -131,6 +166,8 @@ public class GameManager : MonoBehaviour
         }
         timer += timeBonus; // Add time bonus
         UpdateScoreUI();
+        currentStreak++;
+        PlayPerfectParticleEffect();
         if (GetCurrentGameState() != GameState.GameOver)
         {
             UpdateQuoteUI(quotesBonuses[UnityEngine.Random.Range(0, quotesBonuses.Length)]);
@@ -197,12 +234,17 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         timer = timeLimit;
         currentScore = 0;
+        currentStreak = 0;
         timeText.text = FormattedTime();
         UpdateScoreUI();
         UpdateQuoteUI("Get Ready!");
     }
     private void HandleGamePlaying()
     {
+        if (quoteText.text == "Get Ready!")
+        {
+            UpdateQuoteUI("Let's dunk!");
+        }
         selectingBallOverlay.SetActive(false);
         playingOverlay.SetActive(true);
         selectionCamera.enabled = false;
@@ -226,6 +268,8 @@ public class GameManager : MonoBehaviour
     private void HandleGameOver()
     {
         quoteText.text = "Game Over!";
+        currentStreak = 0;
+        StopBasketParticleEffect();
     }
 
     public GameState GetCurrentGameState()
@@ -238,7 +282,6 @@ public class GameManager : MonoBehaviour
     }
     public void OnMoveBasketButtonClick()
     {
-        // UpdateGameState(GameState.Starting);
         isBasketMoveEnabled = !isBasketMoveEnabled;
     }
     public void OnRestartButtonClick()
@@ -264,8 +307,84 @@ public class GameManager : MonoBehaviour
     public Material[] GetSelectedBallMaterial() => ballMaterials;
     public GameObject[] GetBallInScene() => ballInScene;
     public int GetCurrentBallMaterialIndex() => currentBallMaterialIndex;
-    public bool IsMobile() => Application.isMobilePlatform; 
+    public bool IsMobile() => Application.isMobilePlatform;
     public bool IsBasketMoveEnabled() => isBasketMoveEnabled;
+    public AudioSource GetGlobalVolume() => globalVolume;
+    public void PlayRandomBasketAudio()
+    {
+        if (basketAudio.Length > 0)
+        {
+            AudioClip clip = basketAudio[UnityEngine.Random.Range(0, basketAudio.Length)];
+            globalVolume.PlayOneShot(clip);
+        }
+    }
+
+    public void PlayRandomNetAudio()
+    {
+        if (netAudio.Length > 0)
+        {
+            AudioClip clip = netAudio[UnityEngine.Random.Range(0, netAudio.Length)];
+            globalVolume.PlayOneShot(clip);
+        }
+    }
+
+    public void PlayPerfectAudio()
+    {
+        if (perfectAudio != null)
+        {
+            globalVolume.PlayOneShot(perfectAudio);
+        }
+    }
+    public void PlayPerfectParticleEffect()
+    {
+        if (perfectEffect != null)
+        {
+            perfectEffect.Play();
+        }
+    }
+
+    public void PlayStreakEffects()
+    {
+        if (isStreakActive)
+        {
+            foreach (GameObject ball in ballInScene)
+            {
+                BallBehavior ballBehavior = ball.GetComponent<BallBehavior>();
+                if (ballBehavior != null)
+                {
+                    ballBehavior.PlayBallEffect();
+                }
+            }
+            PlayBasketParticleEffect();
+        }
+        else
+        {
+            foreach (GameObject ball in ballInScene)
+            {
+                BallBehavior ballBehavior = ball.GetComponent<BallBehavior>();
+                if (ballBehavior != null)
+                {
+                    ballBehavior.StopBallEffect();
+                }
+            }
+            StopBasketParticleEffect();
+        }
+    }
+    public int ResetCurrentStreak() => currentStreak = 0;
+    public void PlayBasketParticleEffect()
+    {
+        if (basketEffect != null)
+        {
+            basketEffect.Play();
+        }
+    }
+    public void StopBasketParticleEffect()
+    {
+        if (basketEffect != null)
+        {
+            basketEffect.Stop();
+        }
+    }
 }
 
 public enum GameState

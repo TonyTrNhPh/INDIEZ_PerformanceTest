@@ -8,6 +8,7 @@ TagManager:
   - ThrownAbleDetector
   - Slope
   - BasketRing
+  - MissDetector
   layers:
   - Default
   - TransparentFX
