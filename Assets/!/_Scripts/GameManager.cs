@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float scoreDunk = 2.0f;
     [SerializeField] private float timeLimit = 60.0f;
     [SerializeField] private float timeBonus = 10f;
+    [SerializeField] private float targetFPS = 60f;
 
     [Header("Quotes")]
     [SerializeField] private string[] quotesScoring;
@@ -54,9 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        
-
-
+        Application.targetFrameRate = Mathf.RoundToInt(targetFPS);
         if (Instance == null)
         {
             Instance = this;
@@ -152,6 +151,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void ApplyRandomMaterial()
+    {
+        foreach (GameObject ball in ballInScene)
+        {
+            Material randomMaterial = ballMaterials[UnityEngine.Random.Range(0, ballMaterials.Length)];
+            if (ball != null)
+            {
+                Renderer renderer = ball.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    renderer.material = randomMaterial; // Reuse reference
+                }
+            }
+        }
+    }
+
     public void UpdateGameState(GameState newState)
     {
         State = newState;
@@ -236,8 +251,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnRandomBallButtonClick()
     {
-        selectedBallIndex = UnityEngine.Random.Range(0, ballMaterials.Length);
-        ApplySelectedMaterial();
+        ApplyRandomMaterial();
         UpdateGameState(GameState.Playing);
     }
 
@@ -252,6 +266,7 @@ public class GameManager : MonoBehaviour
     {
         return Application.isMobilePlatform;
     }
+
 }
 
 public enum GameState

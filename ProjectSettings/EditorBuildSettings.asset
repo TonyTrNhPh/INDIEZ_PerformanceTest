@@ -12,5 +12,5 @@ EditorBuildSettings:
     path: Assets/Basketball/Assets/Scenes/main.unity
     guid: d8857cb7a29cad848a6e51c7bf733179
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 40e07c8381276d94283ef886c68b24c0, type: 3}
   m_UseUCBPForAssetBundles: 0

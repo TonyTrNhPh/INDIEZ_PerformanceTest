@@ -53,10 +53,10 @@ public class InputManager : MonoBehaviour
                 HandleStartingInput();
                 break;
             case GameState.Playing:
-                HandleGameplayInput();
+                HandlePlayingInput();
                 break;
             case GameState.SelectBall:
-                HandleSelectionInput();
+                HandleSelectingInput();
                 break;
             case GameState.GameOver:
                 break;
@@ -67,32 +67,32 @@ public class InputManager : MonoBehaviour
 
     private bool InputDown()
     {
-        if(GameManager.Instance.IsMobile()) 
+        if (GameManager.Instance.IsMobile())
             return Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
         return Input.GetMouseButtonDown(0);
     }
 
     private bool InputHold()
     {
-        if(GameManager.Instance.IsMobile()) 
-            return Input.touchCount > 0 && 
-            (Input.GetTouch(0).phase == TouchPhase.Moved || 
+        if (GameManager.Instance.IsMobile())
+            return Input.touchCount > 0 &&
+            (Input.GetTouch(0).phase == TouchPhase.Moved ||
             Input.GetTouch(0).phase == TouchPhase.Stationary);
         return Input.GetMouseButton(0);
     }
 
     private bool InputUp()
     {
-        if(GameManager.Instance.IsMobile()) 
-            return Input.touchCount > 0 && 
-            (Input.GetTouch(0).phase == TouchPhase.Ended || 
+        if (GameManager.Instance.IsMobile())
+            return Input.touchCount > 0 &&
+            (Input.GetTouch(0).phase == TouchPhase.Ended ||
             Input.GetTouch(0).phase == TouchPhase.Canceled);
         return Input.GetMouseButtonUp(0);
     }
 
     private Vector2 GetInputPosition()
     {
-        if(GameManager.Instance.IsMobile()) 
+        if (GameManager.Instance.IsMobile())
             return Input.GetTouch(0).position;
         return Input.mousePosition;
     }
@@ -100,7 +100,7 @@ public class InputManager : MonoBehaviour
     private void HandleStartingInput()
     {
         currentBall = null;
-        if(InputDown())
+        if (InputDown())
         {
             if (GetSelectedBall() != null)
             {
@@ -110,19 +110,23 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void HandleGameplayInput()
+    private void HandlePlayingInput()
     {
         if (InputDown())
         {
             PickUpBall();
+            if (currentBall == null) return;
+            StartInputTracking(GetInputPosition());
         }
         if (InputHold())
         {
+            if (currentBall == null) return;
             UpdateInputTracking(GetInputPosition());
             DragBall();
         }
         if (InputUp())
         {
+            if (currentBall == null) return;
             EndInputTracking(GetInputPosition());
             if (isHolding && !isFlicking)
             {
@@ -136,7 +140,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void HandleSelectionInput()
+    private void HandleSelectingInput()
     {
 
         if (InputDown())
@@ -155,7 +159,7 @@ public class InputManager : MonoBehaviour
 
     private GameObject GetSelectedBall()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(GetInputPosition());
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, ballLayer))
@@ -193,7 +197,7 @@ public class InputManager : MonoBehaviour
     private void DragBall()
     {
         if (currentBall == null) return;
-        Vector3 mousePos = Input.mousePosition;
+        Vector3 mousePos = GetInputPosition();
         mousePos.z = mainCamera.WorldToScreenPoint(currentBall.transform.position).z;
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
         currentBall.transform.position = new Vector3(worldPos.x, worldPos.y, fixedZPosition);
@@ -234,21 +238,29 @@ public class InputManager : MonoBehaviour
         isHolding = true;
     }
 
-    private void UpdateInputTracking(Vector2 pos)
+    private void StartInputTracking(Vector2 pos)
     {
-        float timeHeld = Time.time - startInputTime;
-        float distance = Vector2.Distance(pos, startInputPos);
+        if (currentBall == null) return;
         startInputPos = pos;
         startInputTime = Time.time;
+    }
+    private void UpdateInputTracking(Vector2 pos)
+    {
+        if (currentBall == null) return;
+        startInputPos = mainCamera.WorldToScreenPoint(currentBall.transform.position); ;
+        startInputTime = Time.time;
+        float timeHeld = Time.time - startInputTime;
+        float distance = Vector2.Distance(pos, startInputPos);
+
         if (timeHeld > minHoldTime && distance > minHoldDistance)
         {
             isHolding = true;
-            return;
         }
     }
 
     private void EndInputTracking(Vector2 pos)
     {
+        if (currentBall == null) return;
         endInputTime = Time.time;
         endInputPos = pos;
         CalculateMovementType();
@@ -275,14 +287,14 @@ public class InputManager : MonoBehaviour
     {
         ballSelectionRing.SetActive(false);
         isDraggingSelection = true;
-        selectionDragStartPos = Input.mousePosition;
+        selectionDragStartPos = GetInputPosition();
     }
 
     private void UpdateSelectionDrag()
     {
         if (!isDraggingSelection) return;
         ballSelectionRing.SetActive(false);
-        Vector2 currentMousePos = Input.mousePosition;
+        Vector2 currentMousePos = GetInputPosition();
         float dragDelta = currentMousePos.x - selectionDragStartPos.x;
         ballSelectionParent.transform.Rotate(0, -dragDelta * selectionDragSpeed, 0);
         selectionDragStartPos = currentMousePos;
