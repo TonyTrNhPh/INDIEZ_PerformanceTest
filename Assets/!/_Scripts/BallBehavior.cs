@@ -59,6 +59,10 @@ public class BallBehavior : MonoBehaviour
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 0);
             }
         }
+        if (transform.position.y < -10)
+        {
+            ResetOutBounds();
+        }
     }
 
     private void FreezeBall(bool isFreeze)
@@ -150,6 +154,11 @@ public class BallBehavior : MonoBehaviour
             isOnSlope = false;
             isAudioPlayed = false;
         }
+    }
+
+    private void ResetOutBounds()
+    {
+        transform.position = new Vector3(UnityEngine.Random.Range(-3f, 3f), 16, -22);
     }
     public bool GetBallState() => isThrownAble;
     public bool SetBallState(bool state) => isThrownAble = state;
