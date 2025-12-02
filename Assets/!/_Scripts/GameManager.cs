@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera selectionCamera;
     [SerializeField] private Sprite uncheckedSprite;
     [SerializeField] private Sprite checkedSprite;
+    [SerializeField] private GameObject rotateRing1;
 
     public static GameManager Instance { get; private set; }
     public GameState State { get; private set; }
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
             }
             PlayStreakEffects();
         }
+        rotateRing1.transform.Rotate(Vector3.forward * -5f * Time.deltaTime);
     }
     private void UpdateScoreUI()
     {

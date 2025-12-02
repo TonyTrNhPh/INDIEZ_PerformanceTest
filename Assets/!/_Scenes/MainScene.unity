@@ -4500,6 +4500,7 @@ MonoBehaviour:
   selectionCamera: {fileID: 192879967}
   uncheckedSprite: {fileID: 21300000, guid: 645751fb42c0e58700000000000000cd, type: 3}
   checkedSprite: {fileID: 21300000, guid: 628edbfb42c63c0d00000000000000de, type: 3}
+  rotateRing1: {fileID: 1818446253}
 --- !u!1 &618444804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4698,13 +4699,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640484056}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6427876, y: -0, z: -0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: 85, z: 61}
+  m_LocalRotation: {x: 0.6106347, y: -0, z: -0, w: 0.79191244}
+  m_LocalPosition: {x: 0, y: 15.5, z: 30.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1306695532}
-  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75.271, y: 0, z: 0}
 --- !u!114 &640484058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4727,7 +4728,7 @@ MonoBehaviour:
   m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
+  m_SoftShadowQuality: 3
 --- !u!108 &640484059
 Light:
   m_ObjectHideFlags: 0
@@ -4745,10 +4746,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.8
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
