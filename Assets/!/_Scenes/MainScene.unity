@@ -9011,7 +9011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 645751fb42c0e58700000000000000cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1b228e7a538e664d8f905ea218db8da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28305,7 +28305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: restart
+  m_text: restart game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ded8669f291b6974db6930cbdd5799a2, type: 2}
   m_sharedMaterial: {fileID: 2994335196647880820, guid: ded8669f291b6974db6930cbdd5799a2, type: 2}

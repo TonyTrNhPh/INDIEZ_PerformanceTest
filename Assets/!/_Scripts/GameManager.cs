@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeLimit = 60.0f;
     [SerializeField] private float timeBonus = 10f;
     [SerializeField] private float targetFPS = 60f;
-    [SerializeField] private int minStreakStart = 2;
+    [SerializeField] private int minStreakStart = 3;
+    [SerializeField] private GameObject basket;
 
     [Header("Quotes")]
     [SerializeField] private string[] quotesScoring;
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button randomBallButton;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera selectionCamera;
+    [SerializeField] private Sprite uncheckedSprite;
+    [SerializeField] private Sprite checkedSprite;
 
     public static GameManager Instance { get; private set; }
     public GameState State { get; private set; }
@@ -58,8 +61,9 @@ public class GameManager : MonoBehaviour
     private float timer = 0f;
     private int selectedBallIndex = 0;
     private int currentBallMaterialIndex = 0;
-    private bool isBasketMoveEnabled = false;
     private bool isStreakActive = false;
+    private bool isRandom = false;
+    private bool isBasketMoved = false;
 
     private void Awake()
     {
@@ -282,7 +286,8 @@ public class GameManager : MonoBehaviour
     }
     public void OnMoveBasketButtonClick()
     {
-        isBasketMoveEnabled = !isBasketMoveEnabled;
+        isBasketMoved = !isBasketMoved;
+        ToggleSprite(moveBasketButton, isBasketMoved);
     }
     public void OnRestartButtonClick()
     {
@@ -301,6 +306,8 @@ public class GameManager : MonoBehaviour
     public void OnRandomBallButtonClick()
     {
         ApplyRandomMaterial();
+        isRandom = !isRandom;
+        ToggleSprite(randomBallButton, isRandom);
         UpdateGameState(GameState.Playing);
     }
 
@@ -308,7 +315,6 @@ public class GameManager : MonoBehaviour
     public GameObject[] GetBallInScene() => ballInScene;
     public int GetCurrentBallMaterialIndex() => currentBallMaterialIndex;
     public bool IsMobile() => Application.isMobilePlatform;
-    public bool IsBasketMoveEnabled() => isBasketMoveEnabled;
     public AudioSource GetGlobalVolume() => globalVolume;
     public void PlayRandomBasketAudio()
     {
@@ -383,6 +389,15 @@ public class GameManager : MonoBehaviour
         if (basketEffect != null)
         {
             basketEffect.Stop();
+        }
+    }
+
+    public void ToggleSprite(Button button, bool isChecked)
+    {
+        Image buttonImage = button.GetComponent<Image>();
+        if (buttonImage != null)
+        {
+            buttonImage.sprite = isChecked ? checkedSprite : uncheckedSprite;
         }
     }
 }
