@@ -14,8 +14,8 @@ public class InputManager : MonoBehaviour
     [Header("Input Settings")]
     [SerializeField] private float minHoldTime = 0.15f;
     [SerializeField] private float maxFlickTime = 0.12f;
-    [SerializeField] private float minHoldDistance = 0.1f;
-    [SerializeField] private float minFlickDistance = 5.0f;
+    [SerializeField] private float minHoldDistance = 5f;
+    [SerializeField] private float minFlickDistance = 50f;
     [SerializeField] private float throwForce = 0.021f;
     [SerializeField] private float maxThrowHeight = 30f;
     [SerializeField] private float maxThrowDepth = -1f;
@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float minThrowHorizontal = -8f;
     [SerializeField] private float minThrowSpeed = 2000f;
     [SerializeField] private float maxThrowSpeed = 5000f;
+    [SerializeField] private float throwSensitivity = 1.0f;
     [SerializeField] private float fixedZPosition = -23f;
     [SerializeField] private float selectionDragSpeed = 0.3f;
     private bool isHolding = false;
@@ -138,6 +139,10 @@ public class InputManager : MonoBehaviour
             }
             currentBall = null;
         }
+        if (Input.GetMouseButtonUp(1))
+        {
+            Debug.Log("Current Ball Position: " + currentBall.transform.position);
+        }
     }
 
     private void HandleSelectingInput()
@@ -197,6 +202,13 @@ public class InputManager : MonoBehaviour
     private void DragBall()
     {
         if (currentBall == null) return;
+        if (rb != null)
+        {
+            rb.useGravity = false;
+            rb.freezeRotation = true;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
         Vector3 mousePos = GetInputPosition();
         mousePos.z = mainCamera.WorldToScreenPoint(currentBall.transform.position).z;
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
@@ -269,19 +281,22 @@ public class InputManager : MonoBehaviour
     private Vector3 CalculateThrowingTrajectory()
     {
         Vector2 throwVector = endInputPos - startInputPos; // Get the 2D throw vector
+        Debug.Log("Throw Vector 1: " + throwVector.x + ", " + throwVector.y);
         throwVector.y = Mathf.Clamp(throwVector.y, -maxThrowHeight, maxThrowHeight); // Clamp vertical limit
         throwVector.x = Mathf.Clamp(throwVector.x, minThrowHorizontal, maxThrowHorizontal); // Clamp horizontal limit
-
+        Debug.Log("Throw Vector 2: " + throwVector.x + ", " + throwVector.y);
         float dragTime = endInputTime - startInputTime;
         if (dragTime <= 0) dragTime = 0.001f;
 
         float throwSpeed = throwVector.magnitude / dragTime;
         if (throwSpeed < minThrowSpeed) throwSpeed = minThrowSpeed;
         if (throwSpeed > maxThrowSpeed) throwSpeed = maxThrowSpeed;
-        Vector3 throwDirection = new Vector3(throwVector.x, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
 
+        Vector3 throwDirection = new Vector3(throwVector.x*throwSensitivity, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
+        Debug.Log("Throw Direction: " + throwDirection + ", Throw Speed: " + throwSpeed);
         return throwDirection * throwForce * throwSpeed;
     }
+
 
     private void StartSelectionDrag()
     {

@@ -17,7 +17,6 @@ public class BallBehavior : MonoBehaviour
     private bool isScoring = false;
     private Vector3 storedVelocity;
     private Vector3 storedAngularVelocity;
-
     private Rigidbody rb;
 
     private void Awake()
@@ -63,7 +62,7 @@ public class BallBehavior : MonoBehaviour
 
     private void FreezeBall(bool isFreeze)
     {
-        if(rb != null)
+        if (rb != null)
         {
             if (isFreeze)
             {

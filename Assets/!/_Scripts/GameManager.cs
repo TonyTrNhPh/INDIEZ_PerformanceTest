@@ -37,10 +37,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playingOverlay;
     [SerializeField] private GameObject selectingBallOverlay;
     [SerializeField] private Button selectBallButton;
+    [SerializeField] private Button moveBasketButton;
+    [SerializeField] private Button restartButton;
     [SerializeField] private Button confirmBallButton;
     [SerializeField] private Button backToGameButton;
     [SerializeField] private Button randomBallButton;
-    [SerializeField] private Button moveBasketButton;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera selectionCamera;
 
@@ -52,6 +53,8 @@ public class GameManager : MonoBehaviour
     private float timer = 0f;
     private int selectedBallIndex = 0;
     private int currentBallMaterialIndex = 0;
+    private bool isAimAssistEnabled = false;
+    private bool isBasketMoveEnabled = false;
 
     private void Awake()
     {
@@ -229,15 +232,18 @@ public class GameManager : MonoBehaviour
     {
         return State;
     }
-
-    public void OnMoveBasketButtonClick()
-    {
-        UpdateGameState(GameState.Starting);
-    }
-
     public void OnSelectBallButtonClick()
     {
         UpdateGameState(GameState.SelectBall);
+    }
+    public void OnMoveBasketButtonClick()
+    {
+        // UpdateGameState(GameState.Starting);
+        isBasketMoveEnabled = !isBasketMoveEnabled;
+    }
+    public void OnRestartButtonClick()
+    {
+        UpdateGameState(GameState.Starting);
     }
     public void OnConfirmBallButtonClick()
     {
@@ -255,18 +261,11 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.Playing);
     }
 
-    public Material[] GetSelectedBallMaterial() { return ballMaterials; }
-    public GameObject[] GetBallInScene() { return ballInScene; }
-    public int GetCurrentBallMaterialIndex()
-    {
-        return currentBallMaterialIndex;
-    }
-
-    public bool IsMobile()
-    {
-        return Application.isMobilePlatform;
-    }
-
+    public Material[] GetSelectedBallMaterial() => ballMaterials;
+    public GameObject[] GetBallInScene() => ballInScene;
+    public int GetCurrentBallMaterialIndex() => currentBallMaterialIndex;
+    public bool IsMobile() => Application.isMobilePlatform; 
+    public bool IsBasketMoveEnabled() => isBasketMoveEnabled;
 }
 
 public enum GameState
