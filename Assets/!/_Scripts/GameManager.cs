@@ -3,9 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-#if LUNA_PLAYGROUND
-using Luna.Playable;
-#endif
 
 public class GameManager : MonoBehaviour
 {
@@ -52,6 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button randomBallButton;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera selectionCamera;
+    [SerializeField] private GameObject selectionCameraGameObject;
     [SerializeField] private Sprite uncheckedSprite;
     [SerializeField] private Sprite checkedSprite;
     [SerializeField] private GameObject rotateRing1;
@@ -87,30 +85,17 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpdateGameState(GameState.Starting);
-        if (mainCamera != null && selectionCamera != null)
+        if (mainCamera != null && selectionCamera != null && selectionCameraGameObject != null)
         {
             mainCamera.enabled = true;
             selectionCamera.enabled = false;
+            selectionCameraGameObject.SetActive(false);
         }
-
         if (playingOverlay != null && selectingBallOverlay != null)
         {
             playingOverlay.SetActive(true);
             selectingBallOverlay.SetActive(false);
         }
-#if LUNA_PLAYGROUND
-        Playable.InstallFullGame();
-        if (perfectEffect != null)
-    {
-        var main = perfectEffect.main;
-        main.maxParticles = 20; // Reduce from default
-    }
-    if (basketEffect != null)
-    {
-        var main = basketEffect.main;
-        main.maxParticles = 20;
-    }
-#endif
     }
 
     private void Update()
@@ -175,12 +160,13 @@ public class GameManager : MonoBehaviour
         {
             highScore = currentScore;
         }
-#if LUNA_PLAYGROUND
-        Playable.CustomEvent("scored_gained", currentScore.ToString());
-#endif
         UpdateScoreUI();
         currentStreak++;
         UpdateQuoteUI(quotesScoring[UnityEngine.Random.Range(0, quotesScoring.Length)]);
+        if (LunaGameManager.Instance != null)
+        {
+            LunaGameManager.Instance.SendScoreEvent(currentScore);
+        }
     }
 
     public void AddBonus()
@@ -201,15 +187,17 @@ public class GameManager : MonoBehaviour
             highScore = currentScore;
         }
         timer += timeBonus; // Add time bonus
-#if LUNA_PLAYGROUND
-        Playable.CustomEvent("scored_gained", currentScore.ToString());
-#endif
         UpdateScoreUI();
         currentStreak++;
         PlayPerfectParticleEffect();
         if (GetCurrentGameState() != GameState.GameOver)
         {
             UpdateQuoteUI(quotesBonuses[UnityEngine.Random.Range(0, quotesBonuses.Length)]);
+        }
+        if (LunaGameManager.Instance != null)
+        {
+            LunaGameManager.Instance.SendBonusEvent(currentScore);
+            LunaGameManager.Instance.SendPerfectShotEvent();
         }
     }
     private void ApplySelectedMaterial()
@@ -270,12 +258,12 @@ public class GameManager : MonoBehaviour
     }
     private void HandleGameStarting()
     {
-        if (mainCamera != null && selectionCamera != null)
+        if (mainCamera != null && selectionCamera != null && selectionCameraGameObject != null)
         {
             mainCamera.enabled = true;
             selectionCamera.enabled = false;
+            selectionCameraGameObject.SetActive(false);
         }
-
         if (playingOverlay != null && selectingBallOverlay != null)
         {
             playingOverlay.SetActive(true);
@@ -291,9 +279,17 @@ public class GameManager : MonoBehaviour
     }
     private void HandleGamePlaying()
     {
-#if LUNA_PLAYGROUND
-        Playable.CustomEvent("game_started");
-#endif
+        if (mainCamera != null && selectionCamera != null && selectionCameraGameObject != null)
+        {
+            mainCamera.enabled = true;
+            selectionCamera.enabled = false;
+            selectionCameraGameObject.SetActive(false);
+        }
+        if (playingOverlay != null && selectingBallOverlay != null)
+        {
+            playingOverlay.SetActive(true);
+            selectingBallOverlay.SetActive(false);
+        }
         if (quoteText.text == "Get Ready!")
         {
             UpdateQuoteUI("Let's dunk!");
@@ -311,9 +307,17 @@ public class GameManager : MonoBehaviour
         {
             inputManager.TurnToCurrentBallMaterial();
         }
-
-        playingOverlay.SetActive(false);
-        selectingBallOverlay.SetActive(true);
+        if (mainCamera != null && selectionCamera != null && selectionCameraGameObject != null)
+        {
+            mainCamera.enabled = false;
+            selectionCamera.enabled = true;
+            selectionCameraGameObject.SetActive(true);
+        }
+        if (playingOverlay != null && selectingBallOverlay != null)
+        {
+            playingOverlay.SetActive(false);
+            selectingBallOverlay.SetActive(true);
+        }
         StopAllCoroutines();
         selectionCamera.enabled = true;
         mainCamera.enabled = false;
@@ -322,9 +326,6 @@ public class GameManager : MonoBehaviour
     {
         quoteText.text = "Game Over!";
         currentStreak = 0;
-#if LUNA_PLAYGROUND
-        LifeCycle.GameEnded();
-#endif
         StopBasketParticleEffect();
     }
 
@@ -353,6 +354,10 @@ public class GameManager : MonoBehaviour
     {
         selectedBallIndex = inputManager.GetSelectedBallIndex();
         ApplySelectedMaterial();
+        if (LunaGameManager.Instance != null)
+        {
+            LunaGameManager.Instance.SendBallSelectedEvent(selectedBallIndex);
+        }
         UpdateGameState(GameState.Playing);
     }
     public void OnBackToGameButtonClick()

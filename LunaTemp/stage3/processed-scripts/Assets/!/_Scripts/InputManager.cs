@@ -31,6 +31,7 @@ public class InputManager : MonoBehaviour
     private bool isDraggingSelection = false;
     private GameObject currentBall;
     private Rigidbody rb;
+    private SphereCollider collider;
     private Vector2 startInputPos;
     private float startInputTime;
     private Vector2 endInputPos;
@@ -42,7 +43,8 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
@@ -138,6 +140,10 @@ public class InputManager : MonoBehaviour
             }
             currentBall = null;
         }
+        if (Input.GetMouseButtonUp(1))
+        {
+            Debug.Log("Current Ball Position: " + currentBall.transform.position);
+        }
     }
 
     private void HandleSelectingInput()
@@ -178,10 +184,9 @@ public class InputManager : MonoBehaviour
         currentBall = GetSelectedBall();
         if (currentBall == null) return;
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
         isHolding = true;
         rb = currentBall.GetComponent<Rigidbody>();
+        collider = currentBall.GetComponent<SphereCollider>();
 
         if (rb != null)
         {
@@ -189,6 +194,7 @@ public class InputManager : MonoBehaviour
             rb.freezeRotation = true;
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            collider.isTrigger = true;
         }
         if (GameManager.Instance.GetCurrentGameState() != GameState.Playing)
         {
@@ -215,10 +221,9 @@ public class InputManager : MonoBehaviour
     private void ReleaseBall()
     {
         if (currentBall == null) return;
+        collider.isTrigger = false;
         rb.freezeRotation = false;
         rb.useGravity = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         isHolding = false;
         isFlicking = false;
     }
@@ -228,10 +233,9 @@ public class InputManager : MonoBehaviour
         if (currentBall == null) return;
         rb.freezeRotation = false;
         rb.useGravity = true;
+        collider.isTrigger = false;
         rb.AddForce(CalculateThrowingTrajectory(), ForceMode.VelocityChange);
         currentBall.GetComponent<BallBehavior>().SetBallState(false);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         isFlicking = false;
         isHolding = false;
     }

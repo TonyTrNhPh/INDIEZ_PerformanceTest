@@ -70,8 +70,6 @@ MonoBehaviour:
       - rid: 6852985685364965392
       - rid: 6852985685364965394
       - rid: 8712630790384254976
-      - rid: 5130663753781084160
-      - rid: 5130663753781084162
       - rid: 5130663753781084165
   m_AssetVersion: 8
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
@@ -345,7 +343,7 @@ MonoBehaviour:
       data:
         m_Version: 0
         m_ExportShaderVariants: 1
-        m_ShaderVariantLogLevel: 2
+        m_ShaderVariantLogLevel: 0
         m_StripRuntimeDebugShaders: 1
     - rid: 6852985685364965393
       type: {class: ProbeVolumeRuntimeResources, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Core.Runtime}

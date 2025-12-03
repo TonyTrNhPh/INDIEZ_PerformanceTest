@@ -1,6 +1,6 @@
-if ( TRACE ) { TRACE( JSON.parse( '["BallBehavior#init","BallBehavior#Awake","BallBehavior#OnEnable","BallBehavior#OnDisable","BallBehavior#HandleGameStateChange","BallBehavior#FixedUpdate","BallBehavior#FreezeBall","BallBehavior#OnTriggerEnter","BallBehavior#OnCollisionEnter","BallBehavior#OnCollisionExit","BallBehavior#ResetOutBounds","BallBehavior#GetBallState","BallBehavior#SetBallState","BallBehavior#PlayBallEffect","BallBehavior#StopBallEffect","BasketBehavior#init","BasketBehavior#Awake","BasketBehavior#OnEnable","BasketBehavior#OnDisable","BasketBehavior#Update","BasketBehavior#HandleGameStateChange","BasketBehavior#ToggleBasketMovement","BasketBehavior#MoveBasket","BasketBehavior#SetNextTarget","BasketBehavior#FreezeBasket","GameManager#init","GameManager#Awake","GameManager#Start","GameManager#Update","GameManager#UpdateScoreUI","GameManager#UpdateQuoteUI","GameManager#CountdownTimer","GameManager#FormattedTime","GameManager#AddScore","GameManager#AddBonus","GameManager#ApplySelectedMaterial","GameManager#ApplyRandomMaterial","GameManager#UpdateGameState","GameManager#HandleGameStarting","GameManager#HandleGamePlaying","GameManager#HandleGameSelectBall","GameManager#HandleGameOver","GameManager#GetCurrentGameState","GameManager#OnSelectBallButtonClick","GameManager#OnMoveBasketButtonClick","GameManager#OnRestartButtonClick","GameManager#OnConfirmBallButtonClick","GameManager#OnBackToGameButtonClick","GameManager#OnRandomBallButtonClick","GameManager#GetSelectedBallMaterial","GameManager#GetBallInScene","GameManager#GetCurrentBallMaterialIndex","GameManager#IsMobile","GameManager#GetGlobalVolume","GameManager#PlayRandomBasketAudio","GameManager#PlayRandomNetAudio","GameManager#PlayPerfectAudio","GameManager#PlayPerfectParticleEffect","GameManager#PlayStreakEffects","GameManager#ResetCurrentStreak","GameManager#PlayBasketParticleEffect","GameManager#StopBasketParticleEffect","GameManager#ToggleSprite","InputManager#init","InputManager#Start","InputManager#Update","InputManager#InputDown","InputManager#InputHold","InputManager#InputUp","InputManager#GetInputPosition","InputManager#HandleStartingInput","InputManager#HandlePlayingInput","InputManager#HandleSelectingInput","InputManager#GetSelectedBall","InputManager#PickUpBall","InputManager#DragBall","InputManager#ReleaseBall","InputManager#ThrowBall","InputManager#CalculateMovementType","InputManager#StartInputTracking","InputManager#UpdateInputTracking","InputManager#EndInputTracking","InputManager#CalculateThrowingTrajectory","InputManager#StartSelectionDrag","InputManager#UpdateSelectionDrag","InputManager#EndSelectionDrag","InputManager#SnapToBallPos","InputManager#SmoothSnapCoroutine","InputManager#TurnToCurrentBallMaterial","InputManager#TurnToCurrentBallMaterialCoroutine","InputManager#GetSelectedBallIndex"]' ) ); }
+if ( TRACE ) { TRACE( JSON.parse( '["BallBehavior#init","BallBehavior#Awake","BallBehavior#OnEnable","BallBehavior#OnDisable","BallBehavior#HandleGameStateChange","BallBehavior#FixedUpdate","BallBehavior#FreezeBall","BallBehavior#OnTriggerEnter","BallBehavior#OnCollisionEnter","BallBehavior#OnCollisionExit","BallBehavior#ResetOutBounds","BallBehavior#GetBallState","BallBehavior#SetBallState","BallBehavior#PlayBallEffect","BallBehavior#StopBallEffect","BasketBehavior#init","BasketBehavior#Awake","BasketBehavior#OnEnable","BasketBehavior#OnDisable","BasketBehavior#Update","BasketBehavior#HandleGameStateChange","BasketBehavior#ToggleBasketMovement","BasketBehavior#MoveBasket","BasketBehavior#SetNextTarget","BasketBehavior#FreezeBasket","GameManager#init","GameManager#Awake","GameManager#Start","GameManager#Update","GameManager#UpdateScoreUI","GameManager#UpdateQuoteUI","GameManager#CountdownTimer","GameManager#FormattedTime","GameManager#AddScore","GameManager#AddBonus","GameManager#ApplySelectedMaterial","GameManager#ApplyRandomMaterial","GameManager#UpdateGameState","GameManager#HandleGameStarting","GameManager#HandleGamePlaying","GameManager#HandleGameSelectBall","GameManager#HandleGameOver","GameManager#GetCurrentGameState","GameManager#OnSelectBallButtonClick","GameManager#OnMoveBasketButtonClick","GameManager#OnRestartButtonClick","GameManager#OnConfirmBallButtonClick","GameManager#OnBackToGameButtonClick","GameManager#OnRandomBallButtonClick","GameManager#GetSelectedBallMaterial","GameManager#GetBallInScene","GameManager#GetCurrentBallMaterialIndex","GameManager#IsMobile","GameManager#GetGlobalVolume","GameManager#PlayRandomBasketAudio","GameManager#PlayRandomNetAudio","GameManager#PlayPerfectAudio","GameManager#PlayPerfectParticleEffect","GameManager#PlayStreakEffects","GameManager#ResetCurrentStreak","GameManager#PlayBasketParticleEffect","GameManager#StopBasketParticleEffect","GameManager#ToggleSprite","InputManager#init","InputManager#Start","InputManager#Update","InputManager#InputDown","InputManager#InputHold","InputManager#InputUp","InputManager#GetInputPosition","InputManager#HandleStartingInput","InputManager#HandlePlayingInput","InputManager#HandleSelectingInput","InputManager#GetSelectedBall","InputManager#PickUpBall","InputManager#DragBall","InputManager#ReleaseBall","InputManager#ThrowBall","InputManager#CalculateMovementType","InputManager#StartInputTracking","InputManager#UpdateInputTracking","InputManager#EndInputTracking","InputManager#CalculateThrowingTrajectory","InputManager#StartSelectionDrag","InputManager#UpdateSelectionDrag","InputManager#EndSelectionDrag","InputManager#SnapToBallPos","InputManager#SmoothSnapCoroutine","InputManager#TurnToCurrentBallMaterial","InputManager#TurnToCurrentBallMaterialCoroutine","InputManager#GetSelectedBallIndex","LunaGameManager#Instance#get","LunaGameManager#IsLunaMode","LunaGameManager#init","LunaGameManager#Awake","LunaGameManager#Start","LunaGameManager#OnDestroy","LunaGameManager#InitializeLuna","LunaGameManager#InstallFullGame","LunaGameManager#SubscribeToGameEvents","LunaGameManager#UnsubscribeFromGameEvents","LunaGameManager#OnGameStateChanged","LunaGameManager#HandlePauseResume","LunaGameManager#OptimizeForLuna","LunaGameManager#SendScoreEvent","LunaGameManager#SendBonusEvent","LunaGameManager#SendPerfectShotEvent","LunaGameManager#SendStreakEvent","LunaGameManager#SendBallSelectedEvent","LunaGameManager#SendGameStarted","LunaGameManager#SendGamePaused","LunaGameManager#SendGameResumed","LunaGameManager#SendGameEndedEvent"]' ) ); }
 /**
- * @version 1.0.9468.19923
+ * @version 1.0.9468.37350
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
@@ -416,6 +416,7 @@ if ( TRACE ) { TRACE( "BasketBehavior#FreezeBasket", this ); }
             randomBallButton: null,
             mainCamera: null,
             selectionCamera: null,
+            selectionCameraGameObject: null,
             uncheckedSprite: null,
             checkedSprite: null,
             rotateRing1: null,
@@ -472,6 +473,15 @@ if ( TRACE ) { TRACE( "GameManager#Awake", this ); }
 if ( TRACE ) { TRACE( "GameManager#Start", this ); }
 
                 this.UpdateGameState(GameState.Starting);
+                if (UnityEngine.Component.op_Inequality(this.mainCamera, null) && UnityEngine.Component.op_Inequality(this.selectionCamera, null) && UnityEngine.GameObject.op_Inequality(this.selectionCameraGameObject, null)) {
+                    this.mainCamera.enabled = true;
+                    this.selectionCamera.enabled = false;
+                    this.selectionCameraGameObject.SetActive(false);
+                }
+                if (UnityEngine.GameObject.op_Inequality(this.playingOverlay, null) && UnityEngine.GameObject.op_Inequality(this.selectingBallOverlay, null)) {
+                    this.playingOverlay.SetActive(true);
+                    this.selectingBallOverlay.SetActive(false);
+                }
             },
             /*GameManager.Start end.*/
 
@@ -589,6 +599,9 @@ if ( TRACE ) { TRACE( "GameManager#AddScore", this ); }
                 this.UpdateScoreUI();
                 this.currentStreak = (this.currentStreak + 1) | 0;
                 this.UpdateQuoteUI(this.quotesScoring[UnityEngine.Random.Range(0, this.quotesScoring.length)]);
+                if (UnityEngine.MonoBehaviour.op_Inequality(LunaGameManager.Instance, null)) {
+                    LunaGameManager.Instance.SendScoreEvent(this.currentScore);
+                }
             },
             /*GameManager.AddScore end.*/
 
@@ -613,6 +626,10 @@ if ( TRACE ) { TRACE( "GameManager#AddBonus", this ); }
                 this.PlayPerfectParticleEffect();
                 if (this.GetCurrentGameState() !== GameState.GameOver) {
                     this.UpdateQuoteUI(this.quotesBonuses[UnityEngine.Random.Range(0, this.quotesBonuses.length)]);
+                }
+                if (UnityEngine.MonoBehaviour.op_Inequality(LunaGameManager.Instance, null)) {
+                    LunaGameManager.Instance.SendBonusEvent(this.currentScore);
+                    LunaGameManager.Instance.SendPerfectShotEvent();
                 }
             },
             /*GameManager.AddBonus end.*/
@@ -698,6 +715,15 @@ if ( TRACE ) { TRACE( "GameManager#UpdateGameState", this ); }
             HandleGameStarting: function () {
 if ( TRACE ) { TRACE( "GameManager#HandleGameStarting", this ); }
 
+                if (UnityEngine.Component.op_Inequality(this.mainCamera, null) && UnityEngine.Component.op_Inequality(this.selectionCamera, null) && UnityEngine.GameObject.op_Inequality(this.selectionCameraGameObject, null)) {
+                    this.mainCamera.enabled = true;
+                    this.selectionCamera.enabled = false;
+                    this.selectionCameraGameObject.SetActive(false);
+                }
+                if (UnityEngine.GameObject.op_Inequality(this.playingOverlay, null) && UnityEngine.GameObject.op_Inequality(this.selectingBallOverlay, null)) {
+                    this.playingOverlay.SetActive(true);
+                    this.selectingBallOverlay.SetActive(false);
+                }
                 this.StopAllCoroutines();
                 this.timer = this.timeLimit;
                 this.currentScore = 0;
@@ -712,6 +738,15 @@ if ( TRACE ) { TRACE( "GameManager#HandleGameStarting", this ); }
             HandleGamePlaying: function () {
 if ( TRACE ) { TRACE( "GameManager#HandleGamePlaying", this ); }
 
+                if (UnityEngine.Component.op_Inequality(this.mainCamera, null) && UnityEngine.Component.op_Inequality(this.selectionCamera, null) && UnityEngine.GameObject.op_Inequality(this.selectionCameraGameObject, null)) {
+                    this.mainCamera.enabled = true;
+                    this.selectionCamera.enabled = false;
+                    this.selectionCameraGameObject.SetActive(false);
+                }
+                if (UnityEngine.GameObject.op_Inequality(this.playingOverlay, null) && UnityEngine.GameObject.op_Inequality(this.selectingBallOverlay, null)) {
+                    this.playingOverlay.SetActive(true);
+                    this.selectingBallOverlay.SetActive(false);
+                }
                 if (Bridge.referenceEquals(this.quoteText.text, "Get Ready!")) {
                     this.UpdateQuoteUI("Let's dunk!");
                 }
@@ -731,9 +766,15 @@ if ( TRACE ) { TRACE( "GameManager#HandleGameSelectBall", this ); }
                 if (UnityEngine.MonoBehaviour.op_Inequality(this.inputManager, null)) {
                     this.inputManager.TurnToCurrentBallMaterial();
                 }
-
-                this.playingOverlay.SetActive(false);
-                this.selectingBallOverlay.SetActive(true);
+                if (UnityEngine.Component.op_Inequality(this.mainCamera, null) && UnityEngine.Component.op_Inequality(this.selectionCamera, null) && UnityEngine.GameObject.op_Inequality(this.selectionCameraGameObject, null)) {
+                    this.mainCamera.enabled = false;
+                    this.selectionCamera.enabled = true;
+                    this.selectionCameraGameObject.SetActive(true);
+                }
+                if (UnityEngine.GameObject.op_Inequality(this.playingOverlay, null) && UnityEngine.GameObject.op_Inequality(this.selectingBallOverlay, null)) {
+                    this.playingOverlay.SetActive(false);
+                    this.selectingBallOverlay.SetActive(true);
+                }
                 this.StopAllCoroutines();
                 this.selectionCamera.enabled = true;
                 this.mainCamera.enabled = false;
@@ -792,6 +833,9 @@ if ( TRACE ) { TRACE( "GameManager#OnConfirmBallButtonClick", this ); }
 
                 this.selectedBallIndex = this.inputManager.GetSelectedBallIndex();
                 this.ApplySelectedMaterial();
+                if (UnityEngine.MonoBehaviour.op_Inequality(LunaGameManager.Instance, null)) {
+                    LunaGameManager.Instance.SendBallSelectedEvent(this.selectedBallIndex);
+                }
                 this.UpdateGameState(GameState.Playing);
             },
             /*GameManager.OnConfirmBallButtonClick end.*/
@@ -1030,6 +1074,7 @@ if ( TRACE ) { TRACE( "GameManager#ToggleSprite", this ); }
             isDraggingSelection: false,
             currentBall: null,
             rb: null,
+            collider: null,
             startInputPos: null,
             startInputTime: 0,
             endInputPos: null,
@@ -1072,7 +1117,8 @@ if ( TRACE ) { TRACE( "InputManager#init", this ); }
             Start: function () {
 if ( TRACE ) { TRACE( "InputManager#Start", this ); }
 
-
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.Confined;
             },
             /*InputManager.Start end.*/
 
@@ -1189,6 +1235,9 @@ if ( TRACE ) { TRACE( "InputManager#HandlePlayingInput", this ); }
                     }
                     this.currentBall = null;
                 }
+                if (UnityEngine.Input.GetMouseButtonUp(1)) {
+                    UnityEngine.Debug.Log$1("Current Ball Position: " + this.currentBall.transform.position);
+                }
             },
             /*InputManager.HandlePlayingInput end.*/
 
@@ -1235,16 +1284,16 @@ if ( TRACE ) { TRACE( "InputManager#PickUpBall", this ); }
                     return;
                 }
 
-                UnityEngine.Cursor.visible = false;
-                UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.Confined;
                 this.isHolding = true;
                 this.rb = this.currentBall.GetComponent(UnityEngine.Rigidbody);
+                this.collider = this.currentBall.GetComponent(UnityEngine.SphereCollider);
 
                 if (UnityEngine.Component.op_Inequality(this.rb, null)) {
                     this.rb.useGravity = false;
                     this.rb.freezeRotation = true;
                     this.rb.linearVelocity = pc.Vec3.ZERO.clone();
                     this.rb.angularVelocity = pc.Vec3.ZERO.clone();
+                    this.collider.isTrigger = true;
                 }
                 if (GameManager.Instance.GetCurrentGameState() !== GameState.Playing) {
                     GameManager.Instance.UpdateGameState(GameState.Playing);
@@ -1279,10 +1328,9 @@ if ( TRACE ) { TRACE( "InputManager#ReleaseBall", this ); }
                 if (UnityEngine.GameObject.op_Equality(this.currentBall, null)) {
                     return;
                 }
+                this.collider.isTrigger = false;
                 this.rb.freezeRotation = false;
                 this.rb.useGravity = true;
-                UnityEngine.Cursor.visible = true;
-                UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.None;
                 this.isHolding = false;
                 this.isFlicking = false;
             },
@@ -1297,10 +1345,9 @@ if ( TRACE ) { TRACE( "InputManager#ThrowBall", this ); }
                 }
                 this.rb.freezeRotation = false;
                 this.rb.useGravity = true;
+                this.collider.isTrigger = false;
                 this.rb.AddForce$1(this.CalculateThrowingTrajectory(), UnityEngine.ForceMode.VelocityChange);
                 this.currentBall.GetComponent(BallBehavior).SetBallState(false);
-                UnityEngine.Cursor.visible = true;
-                UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.None;
                 this.isFlicking = false;
                 this.isHolding = false;
             },
@@ -1614,6 +1661,234 @@ if ( TRACE ) { TRACE( "InputManager#GetSelectedBallIndex", this ); }
     });
     /*InputManager end.*/
 
+    /*LunaGameManager start.*/
+    Bridge.define("LunaGameManager", {
+        inherits: [UnityEngine.MonoBehaviour],
+        statics: {
+            fields: {
+                instance: null
+            },
+            props: {
+                Instance: {
+                    get: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#Instance#get", this ); }
+
+                        return LunaGameManager.instance;
+                    }
+                }
+            },
+            methods: {
+                /*LunaGameManager.IsLunaMode:static start.*/
+                IsLunaMode: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#IsLunaMode", this ); }
+
+                    return false;
+                },
+                /*LunaGameManager.IsLunaMode:static end.*/
+
+
+            }
+        },
+        fields: {
+            enableLunaAnalytics: false,
+            maxParticles: 0,
+            previousState: 0
+        },
+        ctors: {
+            init: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#init", this ); }
+
+                this.enableLunaAnalytics = true;
+                this.maxParticles = 10;
+                this.previousState = GameState.Starting;
+            }
+        },
+        methods: {
+            /*LunaGameManager.Awake start.*/
+            Awake: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#Awake", this ); }
+
+                if (UnityEngine.MonoBehaviour.op_Equality(LunaGameManager.instance, null)) {
+                    LunaGameManager.instance = this;
+                    UnityEngine.Object.DontDestroyOnLoad(this.gameObject);
+                } else {
+                    UnityEngine.MonoBehaviour.Destroy(this.gameObject);
+                    return;
+                }
+
+                this.InitializeLuna();
+            },
+            /*LunaGameManager.Awake end.*/
+
+            /*LunaGameManager.Start start.*/
+            Start: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#Start", this ); }
+
+                this.InstallFullGame();
+
+                this.SubscribeToGameEvents();
+                this.OptimizeForLuna();
+            },
+            /*LunaGameManager.Start end.*/
+
+            /*LunaGameManager.OnDestroy start.*/
+            OnDestroy: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#OnDestroy", this ); }
+
+                this.UnsubscribeFromGameEvents();
+            },
+            /*LunaGameManager.OnDestroy end.*/
+
+            /*LunaGameManager.InitializeLuna start.*/
+            InitializeLuna: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#InitializeLuna", this ); }
+
+                UnityEngine.Debug.Log$1("[Luna] Not running in Luna mode");
+            },
+            /*LunaGameManager.InitializeLuna end.*/
+
+            /*LunaGameManager.InstallFullGame start.*/
+            InstallFullGame: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#InstallFullGame", this ); }
+ },
+            /*LunaGameManager.InstallFullGame end.*/
+
+            /*LunaGameManager.SubscribeToGameEvents start.*/
+            SubscribeToGameEvents: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#SubscribeToGameEvents", this ); }
+
+                GameManager.addOnGameStateChanged(Bridge.fn.cacheBind(this, this.OnGameStateChanged));
+            },
+            /*LunaGameManager.SubscribeToGameEvents end.*/
+
+            /*LunaGameManager.UnsubscribeFromGameEvents start.*/
+            UnsubscribeFromGameEvents: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#UnsubscribeFromGameEvents", this ); }
+
+                GameManager.removeOnGameStateChanged(Bridge.fn.cacheBind(this, this.OnGameStateChanged));
+            },
+            /*LunaGameManager.UnsubscribeFromGameEvents end.*/
+
+            /*LunaGameManager.OnGameStateChanged start.*/
+            OnGameStateChanged: function (newState) {
+if ( TRACE ) { TRACE( "LunaGameManager#OnGameStateChanged", this ); }
+
+                if (!this.enableLunaAnalytics) {
+                    return;
+                }
+                this.HandlePauseResume(this.previousState, newState);
+
+                switch (newState) {
+                    case GameState.Starting: 
+                        this.SendGameStarted();
+                        UnityEngine.Debug.Log$1("[Luna] Game state: Starting");
+                        break;
+                    case GameState.Playing: 
+                        UnityEngine.Debug.Log$1("[Luna] Game state: Playing");
+                        break;
+                    case GameState.SelectBall: 
+                        UnityEngine.Debug.Log$1("[Luna] Game state: Select Ball (Paused)");
+                        break;
+                    case GameState.GameOver: 
+                        this.SendGameEndedEvent();
+                        break;
+                }
+
+                this.previousState = newState;
+            },
+            /*LunaGameManager.OnGameStateChanged end.*/
+
+            /*LunaGameManager.HandlePauseResume start.*/
+            HandlePauseResume: function (oldState, newState) {
+if ( TRACE ) { TRACE( "LunaGameManager#HandlePauseResume", this ); }
+
+                if (newState === GameState.SelectBall && oldState !== GameState.SelectBall) {
+                    this.SendGamePaused();
+                }
+
+                if (oldState === GameState.SelectBall && newState === GameState.Playing) {
+                    this.SendGameResumed();
+                }
+            },
+            /*LunaGameManager.HandlePauseResume end.*/
+
+            /*LunaGameManager.OptimizeForLuna start.*/
+            OptimizeForLuna: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#OptimizeForLuna", this ); }
+ },
+            /*LunaGameManager.OptimizeForLuna end.*/
+
+            /*LunaGameManager.SendScoreEvent start.*/
+            SendScoreEvent: function (score) {
+if ( TRACE ) { TRACE( "LunaGameManager#SendScoreEvent", this ); }
+
+                UnityEngine.Debug.Log$1(System.String.format("[Luna] Score: {0}", [Bridge.box(score, System.Int32)]));
+            },
+            /*LunaGameManager.SendScoreEvent end.*/
+
+            /*LunaGameManager.SendBonusEvent start.*/
+            SendBonusEvent: function (bonus) {
+if ( TRACE ) { TRACE( "LunaGameManager#SendBonusEvent", this ); }
+
+                UnityEngine.Debug.Log$1(System.String.format("[Luna] Bonus: {0}", [Bridge.box(bonus, System.Int32)]));
+            },
+            /*LunaGameManager.SendBonusEvent end.*/
+
+            /*LunaGameManager.SendPerfectShotEvent start.*/
+            SendPerfectShotEvent: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#SendPerfectShotEvent", this ); }
+
+                UnityEngine.Debug.Log$1("[Luna] Perfect shot!");
+            },
+            /*LunaGameManager.SendPerfectShotEvent end.*/
+
+            /*LunaGameManager.SendStreakEvent start.*/
+            SendStreakEvent: function (streak) {
+if ( TRACE ) { TRACE( "LunaGameManager#SendStreakEvent", this ); }
+
+                UnityEngine.Debug.Log$1(System.String.format("[Luna] Streak: {0}", [Bridge.box(streak, System.Int32)]));
+            },
+            /*LunaGameManager.SendStreakEvent end.*/
+
+            /*LunaGameManager.SendBallSelectedEvent start.*/
+            SendBallSelectedEvent: function (ballIndex) {
+if ( TRACE ) { TRACE( "LunaGameManager#SendBallSelectedEvent", this ); }
+
+                UnityEngine.Debug.Log$1(System.String.format("[Luna] Ball selected: {0}", [Bridge.box(ballIndex, System.Int32)]));
+            },
+            /*LunaGameManager.SendBallSelectedEvent end.*/
+
+            /*LunaGameManager.SendGameStarted start.*/
+            SendGameStarted: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#SendGameStarted", this ); }
+ },
+            /*LunaGameManager.SendGameStarted end.*/
+
+            /*LunaGameManager.SendGamePaused start.*/
+            SendGamePaused: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#SendGamePaused", this ); }
+ },
+            /*LunaGameManager.SendGamePaused end.*/
+
+            /*LunaGameManager.SendGameResumed start.*/
+            SendGameResumed: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#SendGameResumed", this ); }
+ },
+            /*LunaGameManager.SendGameResumed end.*/
+
+            /*LunaGameManager.SendGameEndedEvent start.*/
+            SendGameEndedEvent: function () {
+if ( TRACE ) { TRACE( "LunaGameManager#SendGameEndedEvent", this ); }
+
+                UnityEngine.Debug.Log$1("[Luna] Game state: Game Over (not in Luna mode)");
+            },
+            /*LunaGameManager.SendGameEndedEvent end.*/
+
+
+        }
+    });
+    /*LunaGameManager end.*/
+
     if ( MODULE_reflection ) {
     var $m = Bridge.setMetadata,
         $n = ["System","UnityEngine","System.Collections","UnityEngine.UI","TMPro"];
@@ -1627,7 +1902,7 @@ if ( TRACE ) { TRACE( "InputManager#GetSelectedBallIndex", this ); }
     /*BasketBehavior end.*/
 
     /*GameManager start.*/
-    $m("GameManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddBonus","t":8,"sn":"AddBonus","rt":$n[0].Void},{"a":2,"n":"AddScore","t":8,"sn":"AddScore","rt":$n[0].Void},{"a":1,"n":"ApplyRandomMaterial","t":8,"sn":"ApplyRandomMaterial","rt":$n[0].Void},{"a":1,"n":"ApplySelectedMaterial","t":8,"sn":"ApplySelectedMaterial","rt":$n[0].Void},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":1,"n":"CountdownTimer","t":8,"sn":"CountdownTimer","rt":$n[2].IEnumerator},{"a":1,"n":"FormattedTime","t":8,"sn":"FormattedTime","rt":$n[0].String},{"a":2,"n":"GetBallInScene","t":8,"sn":"GetBallInScene","rt":System.Array.type(UnityEngine.GameObject)},{"a":2,"n":"GetCurrentBallMaterialIndex","t":8,"sn":"GetCurrentBallMaterialIndex","rt":$n[0].Int32,"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"GetCurrentGameState","t":8,"sn":"GetCurrentGameState","rt":GameState,"box":function ($v) { return Bridge.box($v, GameState, System.Enum.toStringFn(GameState));}},{"a":2,"n":"GetGlobalVolume","t":8,"sn":"GetGlobalVolume","rt":$n[1].AudioSource},{"a":2,"n":"GetSelectedBallMaterial","t":8,"sn":"GetSelectedBallMaterial","rt":System.Array.type(UnityEngine.Material)},{"a":1,"n":"HandleGameOver","t":8,"sn":"HandleGameOver","rt":$n[0].Void},{"a":1,"n":"HandleGamePlaying","t":8,"sn":"HandleGamePlaying","rt":$n[0].Void},{"a":1,"n":"HandleGameSelectBall","t":8,"sn":"HandleGameSelectBall","rt":$n[0].Void},{"a":1,"n":"HandleGameStarting","t":8,"sn":"HandleGameStarting","rt":$n[0].Void},{"a":2,"n":"IsMobile","t":8,"sn":"IsMobile","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"OnBackToGameButtonClick","t":8,"sn":"OnBackToGameButtonClick","rt":$n[0].Void},{"a":2,"n":"OnConfirmBallButtonClick","t":8,"sn":"OnConfirmBallButtonClick","rt":$n[0].Void},{"a":2,"n":"OnMoveBasketButtonClick","t":8,"sn":"OnMoveBasketButtonClick","rt":$n[0].Void},{"a":2,"n":"OnRandomBallButtonClick","t":8,"sn":"OnRandomBallButtonClick","rt":$n[0].Void},{"a":2,"n":"OnRestartButtonClick","t":8,"sn":"OnRestartButtonClick","rt":$n[0].Void},{"a":2,"n":"OnSelectBallButtonClick","t":8,"sn":"OnSelectBallButtonClick","rt":$n[0].Void},{"a":2,"n":"PlayBasketParticleEffect","t":8,"sn":"PlayBasketParticleEffect","rt":$n[0].Void},{"a":2,"n":"PlayPerfectAudio","t":8,"sn":"PlayPerfectAudio","rt":$n[0].Void},{"a":2,"n":"PlayPerfectParticleEffect","t":8,"sn":"PlayPerfectParticleEffect","rt":$n[0].Void},{"a":2,"n":"PlayRandomBasketAudio","t":8,"sn":"PlayRandomBasketAudio","rt":$n[0].Void},{"a":2,"n":"PlayRandomNetAudio","t":8,"sn":"PlayRandomNetAudio","rt":$n[0].Void},{"a":2,"n":"PlayStreakEffects","t":8,"sn":"PlayStreakEffects","rt":$n[0].Void},{"a":2,"n":"ResetCurrentStreak","t":8,"sn":"ResetCurrentStreak","rt":$n[0].Int32,"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"StopBasketParticleEffect","t":8,"sn":"StopBasketParticleEffect","rt":$n[0].Void},{"a":2,"n":"ToggleSprite","t":8,"pi":[{"n":"button","pt":$n[3].Button,"ps":0},{"n":"isChecked","pt":$n[0].Boolean,"ps":1}],"sn":"ToggleSprite","rt":$n[0].Void,"p":[$n[3].Button,$n[0].Boolean]},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"UpdateGameState","t":8,"pi":[{"n":"newState","pt":GameState,"ps":0}],"sn":"UpdateGameState","rt":$n[0].Void,"p":[GameState]},{"a":1,"n":"UpdateQuoteUI","t":8,"pi":[{"n":"message","pt":$n[0].String,"ps":0}],"sn":"UpdateQuoteUI","rt":$n[0].Void,"p":[$n[0].String]},{"a":1,"n":"UpdateScoreUI","t":8,"sn":"UpdateScoreUI","rt":$n[0].Void},{"a":2,"n":"Instance","is":true,"t":16,"rt":GameManager,"g":{"a":2,"n":"get_Instance","t":8,"rt":GameManager,"fg":"Instance","is":true},"s":{"a":1,"n":"set_Instance","t":8,"p":[GameManager],"rt":$n[0].Void,"fs":"Instance","is":true},"fn":"Instance"},{"a":2,"n":"State","t":16,"rt":GameState,"g":{"a":2,"n":"get_State","t":8,"rt":GameState,"fg":"State","box":function ($v) { return Bridge.box($v, GameState, System.Enum.toStringFn(GameState));}},"s":{"a":1,"n":"set_State","t":8,"p":[GameState],"rt":$n[0].Void,"fs":"State"},"fn":"State"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"backToGameButton","t":4,"rt":$n[3].Button,"sn":"backToGameButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballInScene","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"ballInScene"},{"at":[new UnityEngine.HeaderAttribute("Ball skins system"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballMaterials","t":4,"rt":System.Array.type(UnityEngine.Material),"sn":"ballMaterials"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"basket","t":4,"rt":BasketBehavior,"sn":"basket"},{"at":[new UnityEngine.HeaderAttribute("Audio"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"basketAudio","t":4,"rt":System.Array.type(UnityEngine.AudioClip),"sn":"basketAudio"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"basketEffect","t":4,"rt":$n[1].ParticleSystem,"sn":"basketEffect"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"checkedSprite","t":4,"rt":$n[1].Sprite,"sn":"checkedSprite"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"confirmBallButton","t":4,"rt":$n[3].Button,"sn":"confirmBallButton"},{"a":1,"n":"currentBallMaterialIndex","t":4,"rt":$n[0].Int32,"sn":"currentBallMaterialIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"currentScore","t":4,"rt":$n[0].Int32,"sn":"currentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.HeaderAttribute("UI Elements"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"currentScoreText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"currentScoreText"},{"a":1,"n":"currentStreak","t":4,"rt":$n[0].Int32,"sn":"currentStreak","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"globalVolume","t":4,"rt":$n[1].AudioSource,"sn":"globalVolume"},{"a":1,"n":"highScore","t":4,"rt":$n[0].Int32,"sn":"highScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"highScoreText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"highScoreText"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"inputManager","t":4,"rt":InputManager,"sn":"inputManager"},{"a":1,"n":"isBasketMoved","t":4,"rt":$n[0].Boolean,"sn":"isBasketMoved","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isRandom","t":4,"rt":$n[0].Boolean,"sn":"isRandom","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isStreakActive","t":4,"rt":$n[0].Boolean,"sn":"isStreakActive","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"mainCamera","t":4,"rt":$n[1].Camera,"sn":"mainCamera"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minStreakStart","t":4,"rt":$n[0].Int32,"sn":"minStreakStart","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"moveBasketButton","t":4,"rt":$n[3].Button,"sn":"moveBasketButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"netAudio","t":4,"rt":System.Array.type(UnityEngine.AudioClip),"sn":"netAudio"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"perfectAudio","t":4,"rt":$n[1].AudioClip,"sn":"perfectAudio"},{"at":[new UnityEngine.HeaderAttribute("Particle"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"perfectEffect","t":4,"rt":$n[1].ParticleSystem,"sn":"perfectEffect"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"playingOverlay","t":4,"rt":$n[1].GameObject,"sn":"playingOverlay"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quoteText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"quoteText"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quotesBonuses","t":4,"rt":$n[0].Array.type(System.String),"sn":"quotesBonuses"},{"at":[new UnityEngine.HeaderAttribute("Quotes"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quotesScoring","t":4,"rt":$n[0].Array.type(System.String),"sn":"quotesScoring"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"randomBallButton","t":4,"rt":$n[3].Button,"sn":"randomBallButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"restartButton","t":4,"rt":$n[3].Button,"sn":"restartButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"rotateRing1","t":4,"rt":$n[1].GameObject,"sn":"rotateRing1"},{"at":[new UnityEngine.HeaderAttribute("Game Settings"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"scoreBase","t":4,"rt":$n[0].Single,"sn":"scoreBase","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"scoreDunk","t":4,"rt":$n[0].Single,"sn":"scoreDunk","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectBallButton","t":4,"rt":$n[3].Button,"sn":"selectBallButton"},{"a":1,"n":"selectedBallIndex","t":4,"rt":$n[0].Int32,"sn":"selectedBallIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectingBallOverlay","t":4,"rt":$n[1].GameObject,"sn":"selectingBallOverlay"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectionCamera","t":4,"rt":$n[1].Camera,"sn":"selectionCamera"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"targetFPS","t":4,"rt":$n[0].Single,"sn":"targetFPS","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"timeBonus","t":4,"rt":$n[0].Single,"sn":"timeBonus","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"timeLimit","t":4,"rt":$n[0].Single,"sn":"timeLimit","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"timeText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"timeText"},{"a":1,"n":"timer","t":4,"rt":$n[0].Single,"sn":"timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"uncheckedSprite","t":4,"rt":$n[1].Sprite,"sn":"uncheckedSprite"},{"a":2,"n":"OnGameStateChanged","is":true,"t":2,"ad":{"a":2,"n":"add_OnGameStateChanged","is":true,"t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnGameStateChanged","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnGameStateChanged","is":true,"t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnGameStateChanged","rt":$n[0].Void,"p":[Function]}},{"a":1,"backing":true,"n":"<Instance>k__BackingField","is":true,"t":4,"rt":GameManager,"sn":"Instance"},{"a":1,"backing":true,"n":"<State>k__BackingField","t":4,"rt":GameState,"sn":"State","box":function ($v) { return Bridge.box($v, GameState, System.Enum.toStringFn(GameState));}}]}; }, $n);
+    $m("GameManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddBonus","t":8,"sn":"AddBonus","rt":$n[0].Void},{"a":2,"n":"AddScore","t":8,"sn":"AddScore","rt":$n[0].Void},{"a":1,"n":"ApplyRandomMaterial","t":8,"sn":"ApplyRandomMaterial","rt":$n[0].Void},{"a":1,"n":"ApplySelectedMaterial","t":8,"sn":"ApplySelectedMaterial","rt":$n[0].Void},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":1,"n":"CountdownTimer","t":8,"sn":"CountdownTimer","rt":$n[2].IEnumerator},{"a":1,"n":"FormattedTime","t":8,"sn":"FormattedTime","rt":$n[0].String},{"a":2,"n":"GetBallInScene","t":8,"sn":"GetBallInScene","rt":System.Array.type(UnityEngine.GameObject)},{"a":2,"n":"GetCurrentBallMaterialIndex","t":8,"sn":"GetCurrentBallMaterialIndex","rt":$n[0].Int32,"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"GetCurrentGameState","t":8,"sn":"GetCurrentGameState","rt":GameState,"box":function ($v) { return Bridge.box($v, GameState, System.Enum.toStringFn(GameState));}},{"a":2,"n":"GetGlobalVolume","t":8,"sn":"GetGlobalVolume","rt":$n[1].AudioSource},{"a":2,"n":"GetSelectedBallMaterial","t":8,"sn":"GetSelectedBallMaterial","rt":System.Array.type(UnityEngine.Material)},{"a":1,"n":"HandleGameOver","t":8,"sn":"HandleGameOver","rt":$n[0].Void},{"a":1,"n":"HandleGamePlaying","t":8,"sn":"HandleGamePlaying","rt":$n[0].Void},{"a":1,"n":"HandleGameSelectBall","t":8,"sn":"HandleGameSelectBall","rt":$n[0].Void},{"a":1,"n":"HandleGameStarting","t":8,"sn":"HandleGameStarting","rt":$n[0].Void},{"a":2,"n":"IsMobile","t":8,"sn":"IsMobile","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"OnBackToGameButtonClick","t":8,"sn":"OnBackToGameButtonClick","rt":$n[0].Void},{"a":2,"n":"OnConfirmBallButtonClick","t":8,"sn":"OnConfirmBallButtonClick","rt":$n[0].Void},{"a":2,"n":"OnMoveBasketButtonClick","t":8,"sn":"OnMoveBasketButtonClick","rt":$n[0].Void},{"a":2,"n":"OnRandomBallButtonClick","t":8,"sn":"OnRandomBallButtonClick","rt":$n[0].Void},{"a":2,"n":"OnRestartButtonClick","t":8,"sn":"OnRestartButtonClick","rt":$n[0].Void},{"a":2,"n":"OnSelectBallButtonClick","t":8,"sn":"OnSelectBallButtonClick","rt":$n[0].Void},{"a":2,"n":"PlayBasketParticleEffect","t":8,"sn":"PlayBasketParticleEffect","rt":$n[0].Void},{"a":2,"n":"PlayPerfectAudio","t":8,"sn":"PlayPerfectAudio","rt":$n[0].Void},{"a":2,"n":"PlayPerfectParticleEffect","t":8,"sn":"PlayPerfectParticleEffect","rt":$n[0].Void},{"a":2,"n":"PlayRandomBasketAudio","t":8,"sn":"PlayRandomBasketAudio","rt":$n[0].Void},{"a":2,"n":"PlayRandomNetAudio","t":8,"sn":"PlayRandomNetAudio","rt":$n[0].Void},{"a":2,"n":"PlayStreakEffects","t":8,"sn":"PlayStreakEffects","rt":$n[0].Void},{"a":2,"n":"ResetCurrentStreak","t":8,"sn":"ResetCurrentStreak","rt":$n[0].Int32,"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"StopBasketParticleEffect","t":8,"sn":"StopBasketParticleEffect","rt":$n[0].Void},{"a":2,"n":"ToggleSprite","t":8,"pi":[{"n":"button","pt":$n[3].Button,"ps":0},{"n":"isChecked","pt":$n[0].Boolean,"ps":1}],"sn":"ToggleSprite","rt":$n[0].Void,"p":[$n[3].Button,$n[0].Boolean]},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"UpdateGameState","t":8,"pi":[{"n":"newState","pt":GameState,"ps":0}],"sn":"UpdateGameState","rt":$n[0].Void,"p":[GameState]},{"a":1,"n":"UpdateQuoteUI","t":8,"pi":[{"n":"message","pt":$n[0].String,"ps":0}],"sn":"UpdateQuoteUI","rt":$n[0].Void,"p":[$n[0].String]},{"a":1,"n":"UpdateScoreUI","t":8,"sn":"UpdateScoreUI","rt":$n[0].Void},{"a":2,"n":"Instance","is":true,"t":16,"rt":GameManager,"g":{"a":2,"n":"get_Instance","t":8,"rt":GameManager,"fg":"Instance","is":true},"s":{"a":1,"n":"set_Instance","t":8,"p":[GameManager],"rt":$n[0].Void,"fs":"Instance","is":true},"fn":"Instance"},{"a":2,"n":"State","t":16,"rt":GameState,"g":{"a":2,"n":"get_State","t":8,"rt":GameState,"fg":"State","box":function ($v) { return Bridge.box($v, GameState, System.Enum.toStringFn(GameState));}},"s":{"a":1,"n":"set_State","t":8,"p":[GameState],"rt":$n[0].Void,"fs":"State"},"fn":"State"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"backToGameButton","t":4,"rt":$n[3].Button,"sn":"backToGameButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballInScene","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"ballInScene"},{"at":[new UnityEngine.HeaderAttribute("Ball skins system"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballMaterials","t":4,"rt":System.Array.type(UnityEngine.Material),"sn":"ballMaterials"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"basket","t":4,"rt":BasketBehavior,"sn":"basket"},{"at":[new UnityEngine.HeaderAttribute("Audio"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"basketAudio","t":4,"rt":System.Array.type(UnityEngine.AudioClip),"sn":"basketAudio"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"basketEffect","t":4,"rt":$n[1].ParticleSystem,"sn":"basketEffect"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"checkedSprite","t":4,"rt":$n[1].Sprite,"sn":"checkedSprite"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"confirmBallButton","t":4,"rt":$n[3].Button,"sn":"confirmBallButton"},{"a":1,"n":"currentBallMaterialIndex","t":4,"rt":$n[0].Int32,"sn":"currentBallMaterialIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"currentScore","t":4,"rt":$n[0].Int32,"sn":"currentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.HeaderAttribute("UI Elements"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"currentScoreText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"currentScoreText"},{"a":1,"n":"currentStreak","t":4,"rt":$n[0].Int32,"sn":"currentStreak","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"globalVolume","t":4,"rt":$n[1].AudioSource,"sn":"globalVolume"},{"a":1,"n":"highScore","t":4,"rt":$n[0].Int32,"sn":"highScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"highScoreText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"highScoreText"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"inputManager","t":4,"rt":InputManager,"sn":"inputManager"},{"a":1,"n":"isBasketMoved","t":4,"rt":$n[0].Boolean,"sn":"isBasketMoved","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isRandom","t":4,"rt":$n[0].Boolean,"sn":"isRandom","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isStreakActive","t":4,"rt":$n[0].Boolean,"sn":"isStreakActive","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"mainCamera","t":4,"rt":$n[1].Camera,"sn":"mainCamera"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minStreakStart","t":4,"rt":$n[0].Int32,"sn":"minStreakStart","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"moveBasketButton","t":4,"rt":$n[3].Button,"sn":"moveBasketButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"netAudio","t":4,"rt":System.Array.type(UnityEngine.AudioClip),"sn":"netAudio"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"perfectAudio","t":4,"rt":$n[1].AudioClip,"sn":"perfectAudio"},{"at":[new UnityEngine.HeaderAttribute("Particle"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"perfectEffect","t":4,"rt":$n[1].ParticleSystem,"sn":"perfectEffect"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"playingOverlay","t":4,"rt":$n[1].GameObject,"sn":"playingOverlay"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quoteText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"quoteText"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quotesBonuses","t":4,"rt":$n[0].Array.type(System.String),"sn":"quotesBonuses"},{"at":[new UnityEngine.HeaderAttribute("Quotes"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quotesScoring","t":4,"rt":$n[0].Array.type(System.String),"sn":"quotesScoring"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"randomBallButton","t":4,"rt":$n[3].Button,"sn":"randomBallButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"restartButton","t":4,"rt":$n[3].Button,"sn":"restartButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"rotateRing1","t":4,"rt":$n[1].GameObject,"sn":"rotateRing1"},{"at":[new UnityEngine.HeaderAttribute("Game Settings"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"scoreBase","t":4,"rt":$n[0].Single,"sn":"scoreBase","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"scoreDunk","t":4,"rt":$n[0].Single,"sn":"scoreDunk","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectBallButton","t":4,"rt":$n[3].Button,"sn":"selectBallButton"},{"a":1,"n":"selectedBallIndex","t":4,"rt":$n[0].Int32,"sn":"selectedBallIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectingBallOverlay","t":4,"rt":$n[1].GameObject,"sn":"selectingBallOverlay"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectionCamera","t":4,"rt":$n[1].Camera,"sn":"selectionCamera"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectionCameraGameObject","t":4,"rt":$n[1].GameObject,"sn":"selectionCameraGameObject"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"targetFPS","t":4,"rt":$n[0].Single,"sn":"targetFPS","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"timeBonus","t":4,"rt":$n[0].Single,"sn":"timeBonus","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"timeLimit","t":4,"rt":$n[0].Single,"sn":"timeLimit","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"timeText","t":4,"rt":$n[4].TextMeshProUGUI,"sn":"timeText"},{"a":1,"n":"timer","t":4,"rt":$n[0].Single,"sn":"timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"uncheckedSprite","t":4,"rt":$n[1].Sprite,"sn":"uncheckedSprite"},{"a":2,"n":"OnGameStateChanged","is":true,"t":2,"ad":{"a":2,"n":"add_OnGameStateChanged","is":true,"t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnGameStateChanged","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnGameStateChanged","is":true,"t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnGameStateChanged","rt":$n[0].Void,"p":[Function]}},{"a":1,"backing":true,"n":"<Instance>k__BackingField","is":true,"t":4,"rt":GameManager,"sn":"Instance"},{"a":1,"backing":true,"n":"<State>k__BackingField","t":4,"rt":GameState,"sn":"State","box":function ($v) { return Bridge.box($v, GameState, System.Enum.toStringFn(GameState));}}]}; }, $n);
     /*GameManager end.*/
 
     /*GameState start.*/
@@ -1635,8 +1910,12 @@ if ( TRACE ) { TRACE( "InputManager#GetSelectedBallIndex", this ); }
     /*GameState end.*/
 
     /*InputManager start.*/
-    $m("InputManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"CalculateMovementType","t":8,"sn":"CalculateMovementType","rt":$n[0].Void},{"a":1,"n":"CalculateThrowingTrajectory","t":8,"sn":"CalculateThrowingTrajectory","rt":$n[1].Vector3},{"a":1,"n":"DragBall","t":8,"sn":"DragBall","rt":$n[0].Void},{"a":1,"n":"EndInputTracking","t":8,"pi":[{"n":"pos","pt":$n[1].Vector2,"ps":0}],"sn":"EndInputTracking","rt":$n[0].Void,"p":[$n[1].Vector2]},{"a":1,"n":"EndSelectionDrag","t":8,"sn":"EndSelectionDrag","rt":$n[0].Void},{"a":1,"n":"GetInputPosition","t":8,"sn":"GetInputPosition","rt":$n[1].Vector2},{"a":1,"n":"GetSelectedBall","t":8,"sn":"GetSelectedBall","rt":$n[1].GameObject},{"a":2,"n":"GetSelectedBallIndex","t":8,"sn":"GetSelectedBallIndex","rt":$n[0].Int32,"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"HandlePlayingInput","t":8,"sn":"HandlePlayingInput","rt":$n[0].Void},{"a":1,"n":"HandleSelectingInput","t":8,"sn":"HandleSelectingInput","rt":$n[0].Void},{"a":1,"n":"HandleStartingInput","t":8,"sn":"HandleStartingInput","rt":$n[0].Void},{"a":1,"n":"InputDown","t":8,"sn":"InputDown","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"InputHold","t":8,"sn":"InputHold","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"InputUp","t":8,"sn":"InputUp","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"PickUpBall","t":8,"sn":"PickUpBall","rt":$n[0].Void},{"a":1,"n":"ReleaseBall","t":8,"sn":"ReleaseBall","rt":$n[0].Void},{"a":1,"n":"SmoothSnapCoroutine","t":8,"sn":"SmoothSnapCoroutine","rt":$n[2].IEnumerator},{"a":1,"n":"SnapToBallPos","t":8,"sn":"SnapToBallPos","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"StartInputTracking","t":8,"pi":[{"n":"pos","pt":$n[1].Vector2,"ps":0}],"sn":"StartInputTracking","rt":$n[0].Void,"p":[$n[1].Vector2]},{"a":1,"n":"StartSelectionDrag","t":8,"sn":"StartSelectionDrag","rt":$n[0].Void},{"a":1,"n":"ThrowBall","t":8,"sn":"ThrowBall","rt":$n[0].Void},{"a":2,"n":"TurnToCurrentBallMaterial","t":8,"sn":"TurnToCurrentBallMaterial","rt":$n[0].Void},{"a":2,"n":"TurnToCurrentBallMaterialCoroutine","t":8,"sn":"TurnToCurrentBallMaterialCoroutine","rt":$n[2].IEnumerator},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":1,"n":"UpdateInputTracking","t":8,"pi":[{"n":"pos","pt":$n[1].Vector2,"ps":0}],"sn":"UpdateInputTracking","rt":$n[0].Void,"p":[$n[1].Vector2]},{"a":1,"n":"UpdateSelectionDrag","t":8,"sn":"UpdateSelectionDrag","rt":$n[0].Void},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballLayer","t":4,"rt":$n[1].LayerMask,"sn":"ballLayer"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballSelectionLayer","t":4,"rt":$n[1].LayerMask,"sn":"ballSelectionLayer"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballSelectionParent","t":4,"rt":$n[1].GameObject,"sn":"ballSelectionParent"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballSelectionRing","t":4,"rt":$n[1].GameObject,"sn":"ballSelectionRing"},{"a":1,"n":"currentBall","t":4,"rt":$n[1].GameObject,"sn":"currentBall"},{"a":1,"n":"endInputPos","t":4,"rt":$n[1].Vector2,"sn":"endInputPos"},{"a":1,"n":"endInputTime","t":4,"rt":$n[0].Single,"sn":"endInputTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"fixedZPosition","t":4,"rt":$n[0].Single,"sn":"fixedZPosition","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"isDraggingSelection","t":4,"rt":$n[0].Boolean,"sn":"isDraggingSelection","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isFlicking","t":4,"rt":$n[0].Boolean,"sn":"isFlicking","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isHolding","t":4,"rt":$n[0].Boolean,"sn":"isHolding","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.HeaderAttribute("Cameras and Layers"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"mainCamera","t":4,"rt":$n[1].Camera,"sn":"mainCamera"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxFlickTime","t":4,"rt":$n[0].Single,"sn":"maxFlickTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowDepth","t":4,"rt":$n[0].Single,"sn":"maxThrowDepth","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowHeight","t":4,"rt":$n[0].Single,"sn":"maxThrowHeight","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowHorizontal","t":4,"rt":$n[0].Single,"sn":"maxThrowHorizontal","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowSpeed","t":4,"rt":$n[0].Single,"sn":"maxThrowSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minFlickDistance","t":4,"rt":$n[0].Single,"sn":"minFlickDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minHoldDistance","t":4,"rt":$n[0].Single,"sn":"minHoldDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.HeaderAttribute("Input Settings"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minHoldTime","t":4,"rt":$n[0].Single,"sn":"minHoldTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minThrowHorizontal","t":4,"rt":$n[0].Single,"sn":"minThrowHorizontal","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minThrowSpeed","t":4,"rt":$n[0].Single,"sn":"minThrowSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"rb","t":4,"rt":$n[1].Rigidbody,"sn":"rb"},{"a":1,"n":"selectedBallIndex","t":4,"rt":$n[0].Int32,"sn":"selectedBallIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectionDragSpeed","t":4,"rt":$n[0].Single,"sn":"selectionDragSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"selectionDragStartPos","t":4,"rt":$n[1].Vector2,"sn":"selectionDragStartPos"},{"a":1,"n":"snapCoroutine","t":4,"rt":$n[1].Coroutine,"sn":"snapCoroutine"},{"a":1,"n":"startInputPos","t":4,"rt":$n[1].Vector2,"sn":"startInputPos"},{"a":1,"n":"startInputTime","t":4,"rt":$n[0].Single,"sn":"startInputTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"throwForce","t":4,"rt":$n[0].Single,"sn":"throwForce","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"throwSensitivity","t":4,"rt":$n[0].Single,"sn":"throwSensitivity","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("InputManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"CalculateMovementType","t":8,"sn":"CalculateMovementType","rt":$n[0].Void},{"a":1,"n":"CalculateThrowingTrajectory","t":8,"sn":"CalculateThrowingTrajectory","rt":$n[1].Vector3},{"a":1,"n":"DragBall","t":8,"sn":"DragBall","rt":$n[0].Void},{"a":1,"n":"EndInputTracking","t":8,"pi":[{"n":"pos","pt":$n[1].Vector2,"ps":0}],"sn":"EndInputTracking","rt":$n[0].Void,"p":[$n[1].Vector2]},{"a":1,"n":"EndSelectionDrag","t":8,"sn":"EndSelectionDrag","rt":$n[0].Void},{"a":1,"n":"GetInputPosition","t":8,"sn":"GetInputPosition","rt":$n[1].Vector2},{"a":1,"n":"GetSelectedBall","t":8,"sn":"GetSelectedBall","rt":$n[1].GameObject},{"a":2,"n":"GetSelectedBallIndex","t":8,"sn":"GetSelectedBallIndex","rt":$n[0].Int32,"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"HandlePlayingInput","t":8,"sn":"HandlePlayingInput","rt":$n[0].Void},{"a":1,"n":"HandleSelectingInput","t":8,"sn":"HandleSelectingInput","rt":$n[0].Void},{"a":1,"n":"HandleStartingInput","t":8,"sn":"HandleStartingInput","rt":$n[0].Void},{"a":1,"n":"InputDown","t":8,"sn":"InputDown","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"InputHold","t":8,"sn":"InputHold","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"InputUp","t":8,"sn":"InputUp","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"PickUpBall","t":8,"sn":"PickUpBall","rt":$n[0].Void},{"a":1,"n":"ReleaseBall","t":8,"sn":"ReleaseBall","rt":$n[0].Void},{"a":1,"n":"SmoothSnapCoroutine","t":8,"sn":"SmoothSnapCoroutine","rt":$n[2].IEnumerator},{"a":1,"n":"SnapToBallPos","t":8,"sn":"SnapToBallPos","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"StartInputTracking","t":8,"pi":[{"n":"pos","pt":$n[1].Vector2,"ps":0}],"sn":"StartInputTracking","rt":$n[0].Void,"p":[$n[1].Vector2]},{"a":1,"n":"StartSelectionDrag","t":8,"sn":"StartSelectionDrag","rt":$n[0].Void},{"a":1,"n":"ThrowBall","t":8,"sn":"ThrowBall","rt":$n[0].Void},{"a":2,"n":"TurnToCurrentBallMaterial","t":8,"sn":"TurnToCurrentBallMaterial","rt":$n[0].Void},{"a":2,"n":"TurnToCurrentBallMaterialCoroutine","t":8,"sn":"TurnToCurrentBallMaterialCoroutine","rt":$n[2].IEnumerator},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":1,"n":"UpdateInputTracking","t":8,"pi":[{"n":"pos","pt":$n[1].Vector2,"ps":0}],"sn":"UpdateInputTracking","rt":$n[0].Void,"p":[$n[1].Vector2]},{"a":1,"n":"UpdateSelectionDrag","t":8,"sn":"UpdateSelectionDrag","rt":$n[0].Void},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballLayer","t":4,"rt":$n[1].LayerMask,"sn":"ballLayer"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballSelectionLayer","t":4,"rt":$n[1].LayerMask,"sn":"ballSelectionLayer"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballSelectionParent","t":4,"rt":$n[1].GameObject,"sn":"ballSelectionParent"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"ballSelectionRing","t":4,"rt":$n[1].GameObject,"sn":"ballSelectionRing"},{"a":1,"n":"collider","t":4,"rt":$n[1].SphereCollider,"sn":"collider"},{"a":1,"n":"currentBall","t":4,"rt":$n[1].GameObject,"sn":"currentBall"},{"a":1,"n":"endInputPos","t":4,"rt":$n[1].Vector2,"sn":"endInputPos"},{"a":1,"n":"endInputTime","t":4,"rt":$n[0].Single,"sn":"endInputTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"fixedZPosition","t":4,"rt":$n[0].Single,"sn":"fixedZPosition","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"isDraggingSelection","t":4,"rt":$n[0].Boolean,"sn":"isDraggingSelection","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isFlicking","t":4,"rt":$n[0].Boolean,"sn":"isFlicking","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isHolding","t":4,"rt":$n[0].Boolean,"sn":"isHolding","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.HeaderAttribute("Cameras and Layers"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"mainCamera","t":4,"rt":$n[1].Camera,"sn":"mainCamera"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxFlickTime","t":4,"rt":$n[0].Single,"sn":"maxFlickTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowDepth","t":4,"rt":$n[0].Single,"sn":"maxThrowDepth","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowHeight","t":4,"rt":$n[0].Single,"sn":"maxThrowHeight","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowHorizontal","t":4,"rt":$n[0].Single,"sn":"maxThrowHorizontal","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxThrowSpeed","t":4,"rt":$n[0].Single,"sn":"maxThrowSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minFlickDistance","t":4,"rt":$n[0].Single,"sn":"minFlickDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minHoldDistance","t":4,"rt":$n[0].Single,"sn":"minHoldDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.HeaderAttribute("Input Settings"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minHoldTime","t":4,"rt":$n[0].Single,"sn":"minHoldTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minThrowHorizontal","t":4,"rt":$n[0].Single,"sn":"minThrowHorizontal","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"minThrowSpeed","t":4,"rt":$n[0].Single,"sn":"minThrowSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"rb","t":4,"rt":$n[1].Rigidbody,"sn":"rb"},{"a":1,"n":"selectedBallIndex","t":4,"rt":$n[0].Int32,"sn":"selectedBallIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"selectionDragSpeed","t":4,"rt":$n[0].Single,"sn":"selectionDragSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"selectionDragStartPos","t":4,"rt":$n[1].Vector2,"sn":"selectionDragStartPos"},{"a":1,"n":"snapCoroutine","t":4,"rt":$n[1].Coroutine,"sn":"snapCoroutine"},{"a":1,"n":"startInputPos","t":4,"rt":$n[1].Vector2,"sn":"startInputPos"},{"a":1,"n":"startInputTime","t":4,"rt":$n[0].Single,"sn":"startInputTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"throwForce","t":4,"rt":$n[0].Single,"sn":"throwForce","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"throwSensitivity","t":4,"rt":$n[0].Single,"sn":"throwSensitivity","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*InputManager end.*/
+
+    /*LunaGameManager start.*/
+    $m("LunaGameManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":1,"n":"HandlePauseResume","t":8,"pi":[{"n":"oldState","pt":GameState,"ps":0},{"n":"newState","pt":GameState,"ps":1}],"sn":"HandlePauseResume","rt":$n[0].Void,"p":[GameState,GameState]},{"a":1,"n":"InitializeLuna","t":8,"sn":"InitializeLuna","rt":$n[0].Void},{"a":1,"n":"InstallFullGame","t":8,"sn":"InstallFullGame","rt":$n[0].Void},{"a":2,"n":"IsLunaMode","is":true,"t":8,"sn":"IsLunaMode","rt":$n[0].Boolean,"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"OnDestroy","t":8,"sn":"OnDestroy","rt":$n[0].Void},{"a":1,"n":"OnGameStateChanged","t":8,"pi":[{"n":"newState","pt":GameState,"ps":0}],"sn":"OnGameStateChanged","rt":$n[0].Void,"p":[GameState]},{"a":1,"n":"OptimizeForLuna","t":8,"sn":"OptimizeForLuna","rt":$n[0].Void},{"a":2,"n":"SendBallSelectedEvent","t":8,"pi":[{"n":"ballIndex","pt":$n[0].Int32,"ps":0}],"sn":"SendBallSelectedEvent","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"SendBonusEvent","t":8,"pi":[{"n":"bonus","pt":$n[0].Int32,"ps":0}],"sn":"SendBonusEvent","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"SendGameEndedEvent","t":8,"sn":"SendGameEndedEvent","rt":$n[0].Void},{"a":1,"n":"SendGamePaused","t":8,"sn":"SendGamePaused","rt":$n[0].Void},{"a":1,"n":"SendGameResumed","t":8,"sn":"SendGameResumed","rt":$n[0].Void},{"a":1,"n":"SendGameStarted","t":8,"sn":"SendGameStarted","rt":$n[0].Void},{"a":2,"n":"SendPerfectShotEvent","t":8,"sn":"SendPerfectShotEvent","rt":$n[0].Void},{"a":2,"n":"SendScoreEvent","t":8,"pi":[{"n":"score","pt":$n[0].Int32,"ps":0}],"sn":"SendScoreEvent","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"SendStreakEvent","t":8,"pi":[{"n":"streak","pt":$n[0].Int32,"ps":0}],"sn":"SendStreakEvent","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"SubscribeToGameEvents","t":8,"sn":"SubscribeToGameEvents","rt":$n[0].Void},{"a":1,"n":"UnsubscribeFromGameEvents","t":8,"sn":"UnsubscribeFromGameEvents","rt":$n[0].Void},{"a":2,"n":"Instance","is":true,"t":16,"rt":LunaGameManager,"g":{"a":2,"n":"get_Instance","t":8,"rt":LunaGameManager,"fg":"Instance","is":true},"fn":"Instance"},{"at":[new UnityEngine.HeaderAttribute("Luna Settings"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"enableLunaAnalytics","t":4,"rt":$n[0].Boolean,"sn":"enableLunaAnalytics","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"instance","is":true,"t":4,"rt":LunaGameManager,"sn":"instance"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"maxParticles","t":4,"rt":$n[0].Int32,"sn":"maxParticles","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"previousState","t":4,"rt":GameState,"sn":"previousState","box":function ($v) { return Bridge.box($v, GameState, System.Enum.toStringFn(GameState));}}]}; }, $n);
+    /*LunaGameManager end.*/
 
     /*IAmAnEmptyScriptJustToMakeCodelessProjectsCompileProperty start.*/
     $m("IAmAnEmptyScriptJustToMakeCodelessProjectsCompileProperty", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"}]}; }, $n);
