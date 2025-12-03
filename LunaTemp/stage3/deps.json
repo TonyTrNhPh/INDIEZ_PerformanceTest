@@ -1,0 +1,23 @@
+{
+  "ignores": [],
+  "groups": [
+    [
+      "D:/Works/Unity/INDIEZ_PerformanceTest/LunaTemp/stage3/processed-scripts/Assets/!/_Scripts/BallBehavior.cs",
+      "D:/Works/Unity/INDIEZ_PerformanceTest/LunaTemp/stage3/processed-scripts/Assets/!/_Scripts/GameManager.cs",
+      "D:/Works/Unity/INDIEZ_PerformanceTest/LunaTemp/stage3/processed-scripts/Assets/!/_Scripts/BasketBehavior.cs",
+      "D:/Works/Unity/INDIEZ_PerformanceTest/LunaTemp/stage3/processed-scripts/Assets/!/_Scripts/InputManager.cs"
+    ],
+    [
+      "D:/Works/Unity/INDIEZ_PerformanceTest/LunaTemp/stage3/processed-scripts/Assets/TutorialInfo/Scripts/Readme.cs"
+    ],
+    [
+      "D:/Works/Unity/7.0.0/pipeline/templates/LunaCompiler/Scripts/Properties/AssemblyInfo.cs"
+    ],
+    [
+      "D:/Works/Unity/7.0.0/pipeline/templates/LunaCompiler/Scripts/Sources/OtherDummyScript.cs"
+    ],
+    [
+      "D:/Works/Unity/7.0.0/pipeline/templates/LunaCompiler/Scripts/obj/Debug/.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+    ]
+  ]
+}

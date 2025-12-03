@@ -42,8 +42,7 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+
     }
 
     private void Update()
@@ -139,10 +138,6 @@ public class InputManager : MonoBehaviour
             }
             currentBall = null;
         }
-        if (Input.GetMouseButtonUp(1))
-        {
-            Debug.Log("Current Ball Position: " + currentBall.transform.position);
-        }
     }
 
     private void HandleSelectingInput()
@@ -183,6 +178,8 @@ public class InputManager : MonoBehaviour
         currentBall = GetSelectedBall();
         if (currentBall == null) return;
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         isHolding = true;
         rb = currentBall.GetComponent<Rigidbody>();
 
@@ -220,6 +217,8 @@ public class InputManager : MonoBehaviour
         if (currentBall == null) return;
         rb.freezeRotation = false;
         rb.useGravity = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         isHolding = false;
         isFlicking = false;
     }
@@ -231,6 +230,8 @@ public class InputManager : MonoBehaviour
         rb.useGravity = true;
         rb.AddForce(CalculateThrowingTrajectory(), ForceMode.VelocityChange);
         currentBall.GetComponent<BallBehavior>().SetBallState(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         isFlicking = false;
         isHolding = false;
     }
@@ -281,10 +282,8 @@ public class InputManager : MonoBehaviour
     private Vector3 CalculateThrowingTrajectory()
     {
         Vector2 throwVector = endInputPos - startInputPos; // Get the 2D throw vector
-        Debug.Log("Throw Vector 1: " + throwVector.x + ", " + throwVector.y);
         throwVector.y = Mathf.Clamp(throwVector.y, -maxThrowHeight, maxThrowHeight); // Clamp vertical limit
         throwVector.x = Mathf.Clamp(throwVector.x, minThrowHorizontal, maxThrowHorizontal); // Clamp horizontal limit
-        Debug.Log("Throw Vector 2: " + throwVector.x + ", " + throwVector.y);
         float dragTime = endInputTime - startInputTime;
         if (dragTime <= 0) dragTime = 0.001f;
 
@@ -293,7 +292,6 @@ public class InputManager : MonoBehaviour
         if (throwSpeed > maxThrowSpeed) throwSpeed = maxThrowSpeed;
 
         Vector3 throwDirection = new Vector3(throwVector.x*throwSensitivity, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
-        Debug.Log("Throw Direction: " + throwDirection + ", Throw Speed: " + throwSpeed);
         return throwDirection * throwForce * throwSpeed;
     }
 
