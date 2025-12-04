@@ -1162,7 +1162,7 @@ MonoBehaviour:
     - _ALPHATEST_ON
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 93
+  version: 118
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
@@ -31015,7 +31015,7 @@ MonoBehaviour:
   _sceneLightData:
     PointLightCount: 0
     SpotLightCount: 0
-    DirectionalLightCount: 11
+    DirectionalLightCount: 16
     LightmapOn: 1
     DirlightmapCombined: 1
     DirectionalCookieExists: 0

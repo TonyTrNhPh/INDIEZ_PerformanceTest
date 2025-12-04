@@ -1344,8 +1344,8 @@ MonoBehaviour:
   ballSelectionRing: {fileID: 1300112841}
   minHoldTime: 0.1
   maxFlickTime: 0.12
-  minHoldDistance: 5
-  minFlickDistance: 30
+  minHoldDistance: 3
+  minFlickDistance: 20
   throwForce: 0.023
   maxThrowHeight: 25
   maxThrowDepth: -2
@@ -12885,7 +12885,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 28.970562
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -12902,7 +12902,7 @@ Camera:
   far clip plane: 1000
   field of view: 45
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 15.4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

@@ -136,6 +136,7 @@
             "Assets/!/_Scenes/LunaScene.unity"
         ],
         "disabledScenes": [
+            "Assets/!/_Scenes/MainScene.unity",
             "Assets/Basketball/Assets/Scenes/main.unity"
         ],
         "startupScene": 0,
@@ -31596,6 +31597,16 @@
                         "script": "",
                         "ext": "",
                         "name": "Assets/!/_Customs/button_restart.png"
+                    },
+                    {
+                        "maxWidth": 512,
+                        "maxHeight": 512,
+                        "format": "png32",
+                        "compression": "none",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/!/_Font/LiberationSans SDF.asset"
                     }
                 ]
             },

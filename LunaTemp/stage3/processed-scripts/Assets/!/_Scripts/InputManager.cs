@@ -44,7 +44,6 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
@@ -195,6 +194,8 @@ public class InputManager : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             collider.isTrigger = true;
+            Cursor.lockState = CursorLockMode.Confined;
+
         }
         if (GameManager.Instance.GetCurrentGameState() != GameState.Playing)
         {
@@ -226,6 +227,7 @@ public class InputManager : MonoBehaviour
         rb.useGravity = true;
         isHolding = false;
         isFlicking = false;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void ThrowBall()
@@ -238,6 +240,7 @@ public class InputManager : MonoBehaviour
         currentBall.GetComponent<BallBehavior>().SetBallState(false);
         isFlicking = false;
         isHolding = false;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void CalculateMovementType()
@@ -295,7 +298,7 @@ public class InputManager : MonoBehaviour
         if (throwSpeed < minThrowSpeed) throwSpeed = minThrowSpeed;
         if (throwSpeed > maxThrowSpeed) throwSpeed = maxThrowSpeed;
 
-        Vector3 throwDirection = new Vector3(throwVector.x*throwSensitivity, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
+        Vector3 throwDirection = new Vector3(throwVector.x * throwSensitivity, throwVector.y, maxThrowDepth - currentBall.transform.position.z).normalized;
         return throwDirection * throwForce * throwSpeed;
     }
 

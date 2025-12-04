@@ -1,6 +1,6 @@
 if ( TRACE ) { TRACE( JSON.parse( '["BallBehavior#init","BallBehavior#Awake","BallBehavior#OnEnable","BallBehavior#OnDisable","BallBehavior#HandleGameStateChange","BallBehavior#FixedUpdate","BallBehavior#FreezeBall","BallBehavior#OnTriggerEnter","BallBehavior#OnCollisionEnter","BallBehavior#OnCollisionExit","BallBehavior#ResetOutBounds","BallBehavior#GetBallState","BallBehavior#SetBallState","BallBehavior#PlayBallEffect","BallBehavior#StopBallEffect","BasketBehavior#init","BasketBehavior#Awake","BasketBehavior#OnEnable","BasketBehavior#OnDisable","BasketBehavior#Update","BasketBehavior#HandleGameStateChange","BasketBehavior#ToggleBasketMovement","BasketBehavior#MoveBasket","BasketBehavior#SetNextTarget","BasketBehavior#FreezeBasket","GameManager#init","GameManager#Awake","GameManager#Start","GameManager#Update","GameManager#UpdateScoreUI","GameManager#UpdateQuoteUI","GameManager#CountdownTimer","GameManager#FormattedTime","GameManager#AddScore","GameManager#AddBonus","GameManager#ApplySelectedMaterial","GameManager#ApplyRandomMaterial","GameManager#UpdateGameState","GameManager#HandleGameStarting","GameManager#HandleGamePlaying","GameManager#HandleGameSelectBall","GameManager#HandleGameOver","GameManager#GetCurrentGameState","GameManager#OnSelectBallButtonClick","GameManager#OnMoveBasketButtonClick","GameManager#OnRestartButtonClick","GameManager#OnConfirmBallButtonClick","GameManager#OnBackToGameButtonClick","GameManager#OnRandomBallButtonClick","GameManager#GetSelectedBallMaterial","GameManager#GetBallInScene","GameManager#GetCurrentBallMaterialIndex","GameManager#IsMobile","GameManager#GetGlobalVolume","GameManager#PlayRandomBasketAudio","GameManager#PlayRandomNetAudio","GameManager#PlayPerfectAudio","GameManager#PlayPerfectParticleEffect","GameManager#PlayStreakEffects","GameManager#ResetCurrentStreak","GameManager#PlayBasketParticleEffect","GameManager#StopBasketParticleEffect","GameManager#ToggleSprite","InputManager#init","InputManager#Start","InputManager#Update","InputManager#InputDown","InputManager#InputHold","InputManager#InputUp","InputManager#GetInputPosition","InputManager#HandleStartingInput","InputManager#HandlePlayingInput","InputManager#HandleSelectingInput","InputManager#GetSelectedBall","InputManager#PickUpBall","InputManager#DragBall","InputManager#ReleaseBall","InputManager#ThrowBall","InputManager#CalculateMovementType","InputManager#StartInputTracking","InputManager#UpdateInputTracking","InputManager#EndInputTracking","InputManager#CalculateThrowingTrajectory","InputManager#StartSelectionDrag","InputManager#UpdateSelectionDrag","InputManager#EndSelectionDrag","InputManager#SnapToBallPos","InputManager#SmoothSnapCoroutine","InputManager#TurnToCurrentBallMaterial","InputManager#TurnToCurrentBallMaterialCoroutine","InputManager#GetSelectedBallIndex","LunaGameManager#Instance#get","LunaGameManager#IsLunaMode","LunaGameManager#init","LunaGameManager#Awake","LunaGameManager#Start","LunaGameManager#OnDestroy","LunaGameManager#InitializeLuna","LunaGameManager#InstallFullGame","LunaGameManager#SubscribeToGameEvents","LunaGameManager#UnsubscribeFromGameEvents","LunaGameManager#OnGameStateChanged","LunaGameManager#HandlePauseResume","LunaGameManager#OptimizeForLuna","LunaGameManager#SendScoreEvent","LunaGameManager#SendBonusEvent","LunaGameManager#SendPerfectShotEvent","LunaGameManager#SendStreakEvent","LunaGameManager#SendBallSelectedEvent","LunaGameManager#SendGameStarted","LunaGameManager#SendGamePaused","LunaGameManager#SendGameResumed","LunaGameManager#SendGameEndedEvent"]' ) ); }
 /**
- * @version 1.0.9468.37350
+ * @version 1.0.9469.17503
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
@@ -1118,7 +1118,6 @@ if ( TRACE ) { TRACE( "InputManager#init", this ); }
 if ( TRACE ) { TRACE( "InputManager#Start", this ); }
 
                 UnityEngine.Cursor.visible = true;
-                UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.Confined;
             },
             /*InputManager.Start end.*/
 
@@ -1294,6 +1293,8 @@ if ( TRACE ) { TRACE( "InputManager#PickUpBall", this ); }
                     this.rb.linearVelocity = pc.Vec3.ZERO.clone();
                     this.rb.angularVelocity = pc.Vec3.ZERO.clone();
                     this.collider.isTrigger = true;
+                    UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.Confined;
+
                 }
                 if (GameManager.Instance.GetCurrentGameState() !== GameState.Playing) {
                     GameManager.Instance.UpdateGameState(GameState.Playing);
@@ -1333,6 +1334,7 @@ if ( TRACE ) { TRACE( "InputManager#ReleaseBall", this ); }
                 this.rb.useGravity = true;
                 this.isHolding = false;
                 this.isFlicking = false;
+                UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.None;
             },
             /*InputManager.ReleaseBall end.*/
 
@@ -1350,6 +1352,7 @@ if ( TRACE ) { TRACE( "InputManager#ThrowBall", this ); }
                 this.currentBall.GetComponent(BallBehavior).SetBallState(false);
                 this.isFlicking = false;
                 this.isHolding = false;
+                UnityEngine.Cursor.lockState = UnityEngine.CursorLockMode.None;
             },
             /*InputManager.ThrowBall end.*/
 

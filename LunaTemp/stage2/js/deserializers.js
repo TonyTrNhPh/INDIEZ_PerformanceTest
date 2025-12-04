@@ -2746,273 +2746,273 @@ Deserializers["UnityEngine.TextCore.Glyph"] = function (request, data, root) {
   return i2828
 }
 
-Deserializers["TMPro.TMP_Character"] = function (request, data, root) {
-  var i2832 = root || request.c( 'TMPro.TMP_Character' )
-  var i2833 = data
-  i2832.m_ElementType = i2833[0]
-  i2832.m_Unicode = i2833[1]
-  i2832.m_GlyphIndex = i2833[2]
-  i2832.m_Scale = i2833[3]
-  return i2832
+Deserializers["UnityEngine.TextCore.GlyphMetrics"] = function (request, data, root) {
+  var i2830 = root || request.c( 'UnityEngine.TextCore.GlyphMetrics' )
+  var i2831 = data
+  i2830.m_Width = i2831[0]
+  i2830.m_Height = i2831[1]
+  i2830.m_HorizontalBearingX = i2831[2]
+  i2830.m_HorizontalBearingY = i2831[3]
+  i2830.m_HorizontalAdvance = i2831[4]
+  return i2830
 }
 
 Deserializers["UnityEngine.TextCore.GlyphRect"] = function (request, data, root) {
-  var i2838 = root || request.c( 'UnityEngine.TextCore.GlyphRect' )
-  var i2839 = data
-  i2838.m_X = i2839[0]
-  i2838.m_Y = i2839[1]
-  i2838.m_Width = i2839[2]
-  i2838.m_Height = i2839[3]
-  return i2838
+  var i2832 = root || request.c( 'UnityEngine.TextCore.GlyphRect' )
+  var i2833 = data
+  i2832.m_X = i2833[0]
+  i2832.m_Y = i2833[1]
+  i2832.m_Width = i2833[2]
+  i2832.m_Height = i2833[3]
+  return i2832
+}
+
+Deserializers["TMPro.TMP_Character"] = function (request, data, root) {
+  var i2836 = root || request.c( 'TMPro.TMP_Character' )
+  var i2837 = data
+  i2836.m_ElementType = i2837[0]
+  i2836.m_Unicode = i2837[1]
+  i2836.m_GlyphIndex = i2837[2]
+  i2836.m_Scale = i2837[3]
+  return i2836
 }
 
 Deserializers["TMPro.TMP_FontFeatureTable"] = function (request, data, root) {
-  var i2840 = root || request.c( 'TMPro.TMP_FontFeatureTable' )
-  var i2841 = data
-  var i2843 = i2841[0]
-  var i2842 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.MultipleSubstitutionRecord')))
-  for(var i = 0; i < i2843.length; i += 1) {
-    i2842.add(request.d('TMPro.MultipleSubstitutionRecord', i2843[i + 0]));
-  }
-  i2840.m_MultipleSubstitutionRecords = i2842
-  var i2845 = i2841[1]
-  var i2844 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.LigatureSubstitutionRecord')))
+  var i2842 = root || request.c( 'TMPro.TMP_FontFeatureTable' )
+  var i2843 = data
+  var i2845 = i2843[0]
+  var i2844 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.MultipleSubstitutionRecord')))
   for(var i = 0; i < i2845.length; i += 1) {
-    i2844.add(request.d('TMPro.LigatureSubstitutionRecord', i2845[i + 0]));
+    i2844.add(request.d('TMPro.MultipleSubstitutionRecord', i2845[i + 0]));
   }
-  i2840.m_LigatureSubstitutionRecords = i2844
-  var i2847 = i2841[2]
-  var i2846 = new (System.Collections.Generic.List$1(Bridge.ns('UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord')))
+  i2842.m_MultipleSubstitutionRecords = i2844
+  var i2847 = i2843[1]
+  var i2846 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.LigatureSubstitutionRecord')))
   for(var i = 0; i < i2847.length; i += 1) {
-    i2846.add(request.d('UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord', i2847[i + 0]));
+    i2846.add(request.d('TMPro.LigatureSubstitutionRecord', i2847[i + 0]));
   }
-  i2840.m_GlyphPairAdjustmentRecords = i2846
-  var i2849 = i2841[3]
-  var i2848 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.MarkToBaseAdjustmentRecord')))
+  i2842.m_LigatureSubstitutionRecords = i2846
+  var i2849 = i2843[2]
+  var i2848 = new (System.Collections.Generic.List$1(Bridge.ns('UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord')))
   for(var i = 0; i < i2849.length; i += 1) {
-    i2848.add(request.d('TMPro.MarkToBaseAdjustmentRecord', i2849[i + 0]));
+    i2848.add(request.d('UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord', i2849[i + 0]));
   }
-  i2840.m_MarkToBaseAdjustmentRecords = i2848
-  var i2851 = i2841[4]
-  var i2850 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.MarkToMarkAdjustmentRecord')))
+  i2842.m_GlyphPairAdjustmentRecords = i2848
+  var i2851 = i2843[3]
+  var i2850 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.MarkToBaseAdjustmentRecord')))
   for(var i = 0; i < i2851.length; i += 1) {
-    i2850.add(request.d('TMPro.MarkToMarkAdjustmentRecord', i2851[i + 0]));
+    i2850.add(request.d('TMPro.MarkToBaseAdjustmentRecord', i2851[i + 0]));
   }
-  i2840.m_MarkToMarkAdjustmentRecords = i2850
-  return i2840
+  i2842.m_MarkToBaseAdjustmentRecords = i2850
+  var i2853 = i2843[4]
+  var i2852 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.MarkToMarkAdjustmentRecord')))
+  for(var i = 0; i < i2853.length; i += 1) {
+    i2852.add(request.d('TMPro.MarkToMarkAdjustmentRecord', i2853[i + 0]));
+  }
+  i2842.m_MarkToMarkAdjustmentRecords = i2852
+  return i2842
 }
 
 Deserializers["TMPro.MultipleSubstitutionRecord"] = function (request, data, root) {
-  var i2854 = root || request.c( 'TMPro.MultipleSubstitutionRecord' )
-  var i2855 = data
-  i2854.m_TargetGlyphID = i2855[0]
-  i2854.m_SubstituteGlyphIDs = i2855[1]
-  return i2854
+  var i2856 = root || request.c( 'TMPro.MultipleSubstitutionRecord' )
+  var i2857 = data
+  i2856.m_TargetGlyphID = i2857[0]
+  i2856.m_SubstituteGlyphIDs = i2857[1]
+  return i2856
 }
 
 Deserializers["TMPro.LigatureSubstitutionRecord"] = function (request, data, root) {
-  var i2858 = root || request.c( 'TMPro.LigatureSubstitutionRecord' )
-  var i2859 = data
-  i2858.m_ComponentGlyphIDs = i2859[0]
-  i2858.m_LigatureGlyphID = i2859[1]
-  return i2858
+  var i2860 = root || request.c( 'TMPro.LigatureSubstitutionRecord' )
+  var i2861 = data
+  i2860.m_ComponentGlyphIDs = i2861[0]
+  i2860.m_LigatureGlyphID = i2861[1]
+  return i2860
 }
 
 Deserializers["UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord"] = function (request, data, root) {
-  var i2862 = root || request.c( 'UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord' )
-  var i2863 = data
-  i2862.m_FirstAdjustmentRecord = request.d('UnityEngine.TextCore.LowLevel.GlyphAdjustmentRecord', i2863[0], i2862.m_FirstAdjustmentRecord)
-  i2862.m_SecondAdjustmentRecord = request.d('UnityEngine.TextCore.LowLevel.GlyphAdjustmentRecord', i2863[1], i2862.m_SecondAdjustmentRecord)
-  i2862.m_FeatureLookupFlags = i2863[2]
-  return i2862
+  var i2864 = root || request.c( 'UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord' )
+  var i2865 = data
+  i2864.m_FirstAdjustmentRecord = request.d('UnityEngine.TextCore.LowLevel.GlyphAdjustmentRecord', i2865[0], i2864.m_FirstAdjustmentRecord)
+  i2864.m_SecondAdjustmentRecord = request.d('UnityEngine.TextCore.LowLevel.GlyphAdjustmentRecord', i2865[1], i2864.m_SecondAdjustmentRecord)
+  i2864.m_FeatureLookupFlags = i2865[2]
+  return i2864
 }
 
 Deserializers["TMPro.MarkToBaseAdjustmentRecord"] = function (request, data, root) {
-  var i2866 = root || request.c( 'TMPro.MarkToBaseAdjustmentRecord' )
-  var i2867 = data
-  i2866.m_BaseGlyphID = i2867[0]
-  i2866.m_BaseGlyphAnchorPoint = request.d('TMPro.GlyphAnchorPoint', i2867[1], i2866.m_BaseGlyphAnchorPoint)
-  i2866.m_MarkGlyphID = i2867[2]
-  i2866.m_MarkPositionAdjustment = request.d('TMPro.MarkPositionAdjustment', i2867[3], i2866.m_MarkPositionAdjustment)
-  return i2866
+  var i2868 = root || request.c( 'TMPro.MarkToBaseAdjustmentRecord' )
+  var i2869 = data
+  i2868.m_BaseGlyphID = i2869[0]
+  i2868.m_BaseGlyphAnchorPoint = request.d('TMPro.GlyphAnchorPoint', i2869[1], i2868.m_BaseGlyphAnchorPoint)
+  i2868.m_MarkGlyphID = i2869[2]
+  i2868.m_MarkPositionAdjustment = request.d('TMPro.MarkPositionAdjustment', i2869[3], i2868.m_MarkPositionAdjustment)
+  return i2868
 }
 
 Deserializers["TMPro.MarkToMarkAdjustmentRecord"] = function (request, data, root) {
-  var i2870 = root || request.c( 'TMPro.MarkToMarkAdjustmentRecord' )
-  var i2871 = data
-  i2870.m_BaseMarkGlyphID = i2871[0]
-  i2870.m_BaseMarkGlyphAnchorPoint = request.d('TMPro.GlyphAnchorPoint', i2871[1], i2870.m_BaseMarkGlyphAnchorPoint)
-  i2870.m_CombiningMarkGlyphID = i2871[2]
-  i2870.m_CombiningMarkPositionAdjustment = request.d('TMPro.MarkPositionAdjustment', i2871[3], i2870.m_CombiningMarkPositionAdjustment)
-  return i2870
+  var i2872 = root || request.c( 'TMPro.MarkToMarkAdjustmentRecord' )
+  var i2873 = data
+  i2872.m_BaseMarkGlyphID = i2873[0]
+  i2872.m_BaseMarkGlyphAnchorPoint = request.d('TMPro.GlyphAnchorPoint', i2873[1], i2872.m_BaseMarkGlyphAnchorPoint)
+  i2872.m_CombiningMarkGlyphID = i2873[2]
+  i2872.m_CombiningMarkPositionAdjustment = request.d('TMPro.MarkPositionAdjustment', i2873[3], i2872.m_CombiningMarkPositionAdjustment)
+  return i2872
 }
 
 Deserializers["TMPro.TMP_FontWeightPair"] = function (request, data, root) {
-  var i2876 = root || request.c( 'TMPro.TMP_FontWeightPair' )
-  var i2877 = data
-  request.r(i2877[0], i2877[1], 0, i2876, 'regularTypeface')
-  request.r(i2877[2], i2877[3], 0, i2876, 'italicTypeface')
-  return i2876
-}
-
-Deserializers["TMPro.FaceInfo_Legacy"] = function (request, data, root) {
-  var i2878 = root || request.c( 'TMPro.FaceInfo_Legacy' )
+  var i2878 = root || request.c( 'TMPro.TMP_FontWeightPair' )
   var i2879 = data
-  i2878.Name = i2879[0]
-  i2878.PointSize = i2879[1]
-  i2878.Scale = i2879[2]
-  i2878.CharacterCount = i2879[3]
-  i2878.LineHeight = i2879[4]
-  i2878.Baseline = i2879[5]
-  i2878.Ascender = i2879[6]
-  i2878.CapHeight = i2879[7]
-  i2878.Descender = i2879[8]
-  i2878.CenterLine = i2879[9]
-  i2878.SuperscriptOffset = i2879[10]
-  i2878.SubscriptOffset = i2879[11]
-  i2878.SubSize = i2879[12]
-  i2878.Underline = i2879[13]
-  i2878.UnderlineThickness = i2879[14]
-  i2878.strikethrough = i2879[15]
-  i2878.strikethroughThickness = i2879[16]
-  i2878.TabWidth = i2879[17]
-  i2878.Padding = i2879[18]
-  i2878.AtlasWidth = i2879[19]
-  i2878.AtlasHeight = i2879[20]
+  request.r(i2879[0], i2879[1], 0, i2878, 'regularTypeface')
+  request.r(i2879[2], i2879[3], 0, i2878, 'italicTypeface')
   return i2878
 }
 
-Deserializers["TMPro.TMP_Glyph"] = function (request, data, root) {
-  var i2882 = root || request.c( 'TMPro.TMP_Glyph' )
-  var i2883 = data
-  i2882.id = i2883[0]
-  i2882.x = i2883[1]
-  i2882.y = i2883[2]
-  i2882.width = i2883[3]
-  i2882.height = i2883[4]
-  i2882.xOffset = i2883[5]
-  i2882.yOffset = i2883[6]
-  i2882.xAdvance = i2883[7]
-  i2882.scale = i2883[8]
-  return i2882
+Deserializers["TMPro.FaceInfo_Legacy"] = function (request, data, root) {
+  var i2880 = root || request.c( 'TMPro.FaceInfo_Legacy' )
+  var i2881 = data
+  i2880.Name = i2881[0]
+  i2880.PointSize = i2881[1]
+  i2880.Scale = i2881[2]
+  i2880.CharacterCount = i2881[3]
+  i2880.LineHeight = i2881[4]
+  i2880.Baseline = i2881[5]
+  i2880.Ascender = i2881[6]
+  i2880.CapHeight = i2881[7]
+  i2880.Descender = i2881[8]
+  i2880.CenterLine = i2881[9]
+  i2880.SuperscriptOffset = i2881[10]
+  i2880.SubscriptOffset = i2881[11]
+  i2880.SubSize = i2881[12]
+  i2880.Underline = i2881[13]
+  i2880.UnderlineThickness = i2881[14]
+  i2880.strikethrough = i2881[15]
+  i2880.strikethroughThickness = i2881[16]
+  i2880.TabWidth = i2881[17]
+  i2880.Padding = i2881[18]
+  i2880.AtlasWidth = i2881[19]
+  i2880.AtlasHeight = i2881[20]
+  return i2880
 }
 
-Deserializers["TMPro.KerningTable"] = function (request, data, root) {
-  var i2884 = root || request.c( 'TMPro.KerningTable' )
+Deserializers["TMPro.TMP_Glyph"] = function (request, data, root) {
+  var i2884 = root || request.c( 'TMPro.TMP_Glyph' )
   var i2885 = data
-  var i2887 = i2885[0]
-  var i2886 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.KerningPair')))
-  for(var i = 0; i < i2887.length; i += 1) {
-    i2886.add(request.d('TMPro.KerningPair', i2887[i + 0]));
-  }
-  i2884.kerningPairs = i2886
+  i2884.id = i2885[0]
+  i2884.x = i2885[1]
+  i2884.y = i2885[2]
+  i2884.width = i2885[3]
+  i2884.height = i2885[4]
+  i2884.xOffset = i2885[5]
+  i2884.yOffset = i2885[6]
+  i2884.xAdvance = i2885[7]
+  i2884.scale = i2885[8]
   return i2884
 }
 
-Deserializers["TMPro.KerningPair"] = function (request, data, root) {
-  var i2890 = root || request.c( 'TMPro.KerningPair' )
-  var i2891 = data
-  i2890.xOffset = i2891[0]
-  i2890.m_FirstGlyph = i2891[1]
-  i2890.m_FirstGlyphAdjustments = request.d('TMPro.GlyphValueRecord_Legacy', i2891[2], i2890.m_FirstGlyphAdjustments)
-  i2890.m_SecondGlyph = i2891[3]
-  i2890.m_SecondGlyphAdjustments = request.d('TMPro.GlyphValueRecord_Legacy', i2891[4], i2890.m_SecondGlyphAdjustments)
-  i2890.m_IgnoreSpacingAdjustments = !!i2891[5]
-  return i2890
+Deserializers["TMPro.KerningTable"] = function (request, data, root) {
+  var i2886 = root || request.c( 'TMPro.KerningTable' )
+  var i2887 = data
+  var i2889 = i2887[0]
+  var i2888 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.KerningPair')))
+  for(var i = 0; i < i2889.length; i += 1) {
+    i2888.add(request.d('TMPro.KerningPair', i2889[i + 0]));
+  }
+  i2886.kerningPairs = i2888
+  return i2886
 }
 
-Deserializers["UnityEngine.TextCore.FaceInfo"] = function (request, data, root) {
-  var i2892 = root || request.c( 'UnityEngine.TextCore.FaceInfo' )
+Deserializers["TMPro.KerningPair"] = function (request, data, root) {
+  var i2892 = root || request.c( 'TMPro.KerningPair' )
   var i2893 = data
-  i2892.m_FaceIndex = i2893[0]
-  i2892.m_FamilyName = i2893[1]
-  i2892.m_StyleName = i2893[2]
-  i2892.m_PointSize = i2893[3]
-  i2892.m_Scale = i2893[4]
-  i2892.m_UnitsPerEM = i2893[5]
-  i2892.m_LineHeight = i2893[6]
-  i2892.m_AscentLine = i2893[7]
-  i2892.m_CapLine = i2893[8]
-  i2892.m_MeanLine = i2893[9]
-  i2892.m_Baseline = i2893[10]
-  i2892.m_DescentLine = i2893[11]
-  i2892.m_SuperscriptOffset = i2893[12]
-  i2892.m_SuperscriptSize = i2893[13]
-  i2892.m_SubscriptOffset = i2893[14]
-  i2892.m_SubscriptSize = i2893[15]
-  i2892.m_UnderlineOffset = i2893[16]
-  i2892.m_UnderlineThickness = i2893[17]
-  i2892.m_StrikethroughOffset = i2893[18]
-  i2892.m_StrikethroughThickness = i2893[19]
-  i2892.m_TabWidth = i2893[20]
+  i2892.xOffset = i2893[0]
+  i2892.m_FirstGlyph = i2893[1]
+  i2892.m_FirstGlyphAdjustments = request.d('TMPro.GlyphValueRecord_Legacy', i2893[2], i2892.m_FirstGlyphAdjustments)
+  i2892.m_SecondGlyph = i2893[3]
+  i2892.m_SecondGlyphAdjustments = request.d('TMPro.GlyphValueRecord_Legacy', i2893[4], i2892.m_SecondGlyphAdjustments)
+  i2892.m_IgnoreSpacingAdjustments = !!i2893[5]
   return i2892
 }
 
-Deserializers["TMPro.TMP_Settings"] = function (request, data, root) {
-  var i2894 = root || request.c( 'TMPro.TMP_Settings' )
+Deserializers["UnityEngine.TextCore.FaceInfo"] = function (request, data, root) {
+  var i2894 = root || request.c( 'UnityEngine.TextCore.FaceInfo' )
   var i2895 = data
-  i2894.assetVersion = i2895[0]
-  i2894.m_TextWrappingMode = i2895[1]
-  i2894.m_enableKerning = !!i2895[2]
-  var i2897 = i2895[3]
-  var i2896 = new (System.Collections.Generic.List$1(Bridge.ns('UnityEngine.TextCore.OTL_FeatureTag')))
-  for(var i = 0; i < i2897.length; i += 1) {
-    i2896.add(i2897[i + 0]);
-  }
-  i2894.m_ActiveFontFeatures = i2896
-  i2894.m_enableExtraPadding = !!i2895[4]
-  i2894.m_enableTintAllSprites = !!i2895[5]
-  i2894.m_enableParseEscapeCharacters = !!i2895[6]
-  i2894.m_EnableRaycastTarget = !!i2895[7]
-  i2894.m_GetFontFeaturesAtRuntime = !!i2895[8]
-  i2894.m_missingGlyphCharacter = i2895[9]
-  i2894.m_ClearDynamicDataOnBuild = !!i2895[10]
-  i2894.m_warningsDisabled = !!i2895[11]
-  request.r(i2895[12], i2895[13], 0, i2894, 'm_defaultFontAsset')
-  i2894.m_defaultFontAssetPath = i2895[14]
-  i2894.m_defaultFontSize = i2895[15]
-  i2894.m_defaultAutoSizeMinRatio = i2895[16]
-  i2894.m_defaultAutoSizeMaxRatio = i2895[17]
-  i2894.m_defaultTextMeshProTextContainerSize = new pc.Vec2( i2895[18], i2895[19] )
-  i2894.m_defaultTextMeshProUITextContainerSize = new pc.Vec2( i2895[20], i2895[21] )
-  i2894.m_autoSizeTextContainer = !!i2895[22]
-  i2894.m_IsTextObjectScaleStatic = !!i2895[23]
-  var i2899 = i2895[24]
-  var i2898 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.TMP_FontAsset')))
-  for(var i = 0; i < i2899.length; i += 2) {
-  request.r(i2899[i + 0], i2899[i + 1], 1, i2898, '')
-  }
-  i2894.m_fallbackFontAssets = i2898
-  i2894.m_matchMaterialPreset = !!i2895[25]
-  i2894.m_HideSubTextObjects = !!i2895[26]
-  request.r(i2895[27], i2895[28], 0, i2894, 'm_defaultSpriteAsset')
-  i2894.m_defaultSpriteAssetPath = i2895[29]
-  i2894.m_enableEmojiSupport = !!i2895[30]
-  i2894.m_MissingCharacterSpriteUnicode = i2895[31]
-  var i2901 = i2895[32]
-  var i2900 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.TMP_Asset')))
-  for(var i = 0; i < i2901.length; i += 2) {
-  request.r(i2901[i + 0], i2901[i + 1], 1, i2900, '')
-  }
-  i2894.m_EmojiFallbackTextAssets = i2900
-  i2894.m_defaultColorGradientPresetsPath = i2895[33]
-  request.r(i2895[34], i2895[35], 0, i2894, 'm_defaultStyleSheet')
-  i2894.m_StyleSheetsResourcePath = i2895[36]
-  request.r(i2895[37], i2895[38], 0, i2894, 'm_leadingCharacters')
-  request.r(i2895[39], i2895[40], 0, i2894, 'm_followingCharacters')
-  i2894.m_UseModernHangulLineBreakingRules = !!i2895[41]
+  i2894.m_FaceIndex = i2895[0]
+  i2894.m_FamilyName = i2895[1]
+  i2894.m_StyleName = i2895[2]
+  i2894.m_PointSize = i2895[3]
+  i2894.m_Scale = i2895[4]
+  i2894.m_UnitsPerEM = i2895[5]
+  i2894.m_LineHeight = i2895[6]
+  i2894.m_AscentLine = i2895[7]
+  i2894.m_CapLine = i2895[8]
+  i2894.m_MeanLine = i2895[9]
+  i2894.m_Baseline = i2895[10]
+  i2894.m_DescentLine = i2895[11]
+  i2894.m_SuperscriptOffset = i2895[12]
+  i2894.m_SuperscriptSize = i2895[13]
+  i2894.m_SubscriptOffset = i2895[14]
+  i2894.m_SubscriptSize = i2895[15]
+  i2894.m_UnderlineOffset = i2895[16]
+  i2894.m_UnderlineThickness = i2895[17]
+  i2894.m_StrikethroughOffset = i2895[18]
+  i2894.m_StrikethroughThickness = i2895[19]
+  i2894.m_TabWidth = i2895[20]
   return i2894
 }
 
-Deserializers["UnityEngine.TextCore.GlyphMetrics"] = function (request, data, root) {
-  var i2904 = root || request.c( 'UnityEngine.TextCore.GlyphMetrics' )
-  var i2905 = data
-  i2904.m_Width = i2905[0]
-  i2904.m_Height = i2905[1]
-  i2904.m_HorizontalBearingX = i2905[2]
-  i2904.m_HorizontalBearingY = i2905[3]
-  i2904.m_HorizontalAdvance = i2905[4]
-  return i2904
+Deserializers["TMPro.TMP_Settings"] = function (request, data, root) {
+  var i2896 = root || request.c( 'TMPro.TMP_Settings' )
+  var i2897 = data
+  i2896.assetVersion = i2897[0]
+  i2896.m_TextWrappingMode = i2897[1]
+  i2896.m_enableKerning = !!i2897[2]
+  var i2899 = i2897[3]
+  var i2898 = new (System.Collections.Generic.List$1(Bridge.ns('UnityEngine.TextCore.OTL_FeatureTag')))
+  for(var i = 0; i < i2899.length; i += 1) {
+    i2898.add(i2899[i + 0]);
+  }
+  i2896.m_ActiveFontFeatures = i2898
+  i2896.m_enableExtraPadding = !!i2897[4]
+  i2896.m_enableTintAllSprites = !!i2897[5]
+  i2896.m_enableParseEscapeCharacters = !!i2897[6]
+  i2896.m_EnableRaycastTarget = !!i2897[7]
+  i2896.m_GetFontFeaturesAtRuntime = !!i2897[8]
+  i2896.m_missingGlyphCharacter = i2897[9]
+  i2896.m_ClearDynamicDataOnBuild = !!i2897[10]
+  i2896.m_warningsDisabled = !!i2897[11]
+  request.r(i2897[12], i2897[13], 0, i2896, 'm_defaultFontAsset')
+  i2896.m_defaultFontAssetPath = i2897[14]
+  i2896.m_defaultFontSize = i2897[15]
+  i2896.m_defaultAutoSizeMinRatio = i2897[16]
+  i2896.m_defaultAutoSizeMaxRatio = i2897[17]
+  i2896.m_defaultTextMeshProTextContainerSize = new pc.Vec2( i2897[18], i2897[19] )
+  i2896.m_defaultTextMeshProUITextContainerSize = new pc.Vec2( i2897[20], i2897[21] )
+  i2896.m_autoSizeTextContainer = !!i2897[22]
+  i2896.m_IsTextObjectScaleStatic = !!i2897[23]
+  var i2901 = i2897[24]
+  var i2900 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.TMP_FontAsset')))
+  for(var i = 0; i < i2901.length; i += 2) {
+  request.r(i2901[i + 0], i2901[i + 1], 1, i2900, '')
+  }
+  i2896.m_fallbackFontAssets = i2900
+  i2896.m_matchMaterialPreset = !!i2897[25]
+  i2896.m_HideSubTextObjects = !!i2897[26]
+  request.r(i2897[27], i2897[28], 0, i2896, 'm_defaultSpriteAsset')
+  i2896.m_defaultSpriteAssetPath = i2897[29]
+  i2896.m_enableEmojiSupport = !!i2897[30]
+  i2896.m_MissingCharacterSpriteUnicode = i2897[31]
+  var i2903 = i2897[32]
+  var i2902 = new (System.Collections.Generic.List$1(Bridge.ns('TMPro.TMP_Asset')))
+  for(var i = 0; i < i2903.length; i += 2) {
+  request.r(i2903[i + 0], i2903[i + 1], 1, i2902, '')
+  }
+  i2896.m_EmojiFallbackTextAssets = i2902
+  i2896.m_defaultColorGradientPresetsPath = i2897[33]
+  request.r(i2897[34], i2897[35], 0, i2896, 'm_defaultStyleSheet')
+  i2896.m_StyleSheetsResourcePath = i2897[36]
+  request.r(i2897[37], i2897[38], 0, i2896, 'm_leadingCharacters')
+  request.r(i2897[39], i2897[40], 0, i2896, 'm_followingCharacters')
+  i2896.m_UseModernHangulLineBreakingRules = !!i2897[41]
+  return i2896
 }
 
 Deserializers["UnityEngine.TextCore.LowLevel.GlyphAdjustmentRecord"] = function (request, data, root) {
@@ -3399,7 +3399,7 @@ Deserializers.productName = "INDIEZ_PerformanceTest";
 
 Deserializers.lunaInitializationTime = "11/25/2025 03:49:18";
 
-Deserializers.lunaDaysRunning = "8.4";
+Deserializers.lunaDaysRunning = "9.0";
 
 Deserializers.lunaVersion = "7.0.0";
 
@@ -3445,17 +3445,17 @@ Deserializers.isLunaCompilerV2Used = "False";
 
 Deserializers.companyName = "DefaultCompany";
 
-Deserializers.buildPlatform = "Android";
+Deserializers.buildPlatform = "WebGL";
 
-Deserializers.applicationIdentifier = "com.UnityTechnologies.com.unity.template.urpblank";
+Deserializers.applicationIdentifier = "com.DefaultCompany.INDIEZ-PerformanceTest";
 
 Deserializers.disableAntiAliasing = true;
 
 Deserializers.graphicsConstraint = 24;
 
-Deserializers.linearColorSpace = true;
+Deserializers.linearColorSpace = false;
 
-Deserializers.buildID = "25e2ec87-b225-48f1-af53-a09bf86d65ba";
+Deserializers.buildID = "e87fff34-8962-486b-9b45-eb1600134aef";
 
 Deserializers.runtimeInitializeOnLoadInfos = [[["UnityEngine","Rendering","DebugUpdater","RuntimeInit"],["UnityEngine","Experimental","Rendering","ScriptableRuntimeReflectionSystemSettings","ScriptingDirtyReflectionSystemInstance"]],[["Unity","VisualScripting","RuntimeVSUsageUtility","RuntimeInitializeOnLoadBeforeSceneLoad"],["UnityEngine","InputSystem","InputSystem","RunInitialUpdate"],["Unity","AI","Navigation","NavMeshModifierVolume","ClearNavMeshModifiers"],["Unity","AI","Navigation","NavMeshLink","ClearTrackedList"],["Unity","AI","Navigation","NavMeshSurface","ClearNavMeshSurfaces"],["Unity","AI","Navigation","NavMeshModifier","ClearNavMeshModifiers"],["UnityEngine","AI","NavMesh","ClearPreUpdateListeners"]],[["$BurstDirectCallInitializer","Initialize"],["$BurstDirectCallInitializer","Initialize"],["$BurstDirectCallInitializer","Initialize"],["$BurstDirectCallInitializer","Initialize"]],[["UnityEngine","Experimental","Rendering","XRSystem","XRSystemInit"]],[["UnityEngine","InputSystem","Plugins","InputForUI","InputSystemProvider","Bootstrap"],["UnityEngine","InputSystem","UI","InputSystemUIInputModule","ResetDefaultActions"],["UnityEngine","InputSystem","InputSystem","RunInitializeInPlayer"]]];
 
